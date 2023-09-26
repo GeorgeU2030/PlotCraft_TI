@@ -8,9 +8,10 @@ from controller.AdventureController import AdventureController
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 class Ui_adventureUI(object):
-    def __init__(self, user):
+    def __init__(self, user,automaton):
         self.user = user
-        self.main_controller = AdventureController(self,user)
+        self.automaton = automaton
+        self.main_controller = AdventureController(self,user,automaton)
 
     def setupUi(self, adventureUI):
         adventureUI.setObjectName("adventureUI")
@@ -130,7 +131,7 @@ class Ui_adventureUI(object):
         # ----------- ACTIONS
 
         self.backBtn.clicked.connect(lambda:self.main_controller.backScreen(adventureUI))
-        self.jungleBtn.clicked.connect(lambda checked,text="jungle":self.main_controller.jungleDesc(text))
+        self.jungleBtn.clicked.connect(lambda checked,text="jungle":self.main_controller.jungleDesc(text,adventureUI))
         self.treasureBtn.clicked.connect(lambda checked,text="treasure":self.main_controller.jungleDesc(text))
         self.raceBtn.clicked.connect(lambda checked,text="race":self.main_controller.jungleDesc(text))
         self.himalayaBtn.clicked.connect(lambda checked,text="himalaya":self.main_controller.jungleDesc(text))

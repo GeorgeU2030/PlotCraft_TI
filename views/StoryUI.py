@@ -1,0 +1,115 @@
+import sys
+import os
+
+myDir = os.getcwd()
+sys.path.append(myDir)
+
+from controller.StoryController import StoryController
+from PyQt5 import QtCore, QtGui, QtWidgets
+
+
+class Ui_storyWindow(object):
+    def __init__(self, user,automaton):
+        self.user = user
+        self.automaton = automaton
+        self.main_controller = StoryController(self,user,automaton)
+
+    def setupUi(self, storyWindow):
+        storyWindow.setObjectName("storyWindow")
+        storyWindow.resize(600, 530)
+        icon = QtGui.QIcon()
+        icon.addPixmap(QtGui.QPixmap("ui\\../images/libro.png"), QtGui.QIcon.Normal, QtGui.QIcon.On)
+        storyWindow.setWindowIcon(icon)
+        storyWindow.setStyleSheet("background-color:#107acc;")
+        self.phaseStory = QtWidgets.QLabel(storyWindow)
+        self.phaseStory.setGeometry(QtCore.QRect(220, 10, 151, 61))
+        font = QtGui.QFont()
+        font.setFamily("Segoe UI")
+        font.setPointSize(18)
+        self.phaseStory.setFont(font)
+        self.phaseStory.setStyleSheet("color:white;")
+        self.phaseStory.setAlignment(QtCore.Qt.AlignCenter)
+        self.phaseStory.setObjectName("phaseStory")
+        self.option1label = QtWidgets.QLabel(storyWindow)
+        self.option1label.setGeometry(QtCore.QRect(60, 100, 191, 101))
+        font = QtGui.QFont()
+        font.setFamily("Segoe UI")
+        font.setPointSize(11)
+        self.option1label.setFont(font)
+        self.option1label.setStyleSheet("color:white;\n"
+"border: 1px solid white;\n"
+"border-radius:4px;")
+        self.option1label.setText("")
+        self.option1label.setAlignment(QtCore.Qt.AlignCenter)
+        self.option1label.setWordWrap(True)
+        self.option1label.setObjectName("option1label")
+        self.option2label = QtWidgets.QLabel(storyWindow)
+        self.option2label.setGeometry(QtCore.QRect(340, 100, 191, 101))
+        font = QtGui.QFont()
+        font.setFamily("Segoe UI")
+        font.setPointSize(11)
+        self.option2label.setFont(font)
+        self.option2label.setStyleSheet("color:white;\n"
+"border: 1px solid white;\n"
+"border-radius:4px;")
+        self.option2label.setText("")
+        self.option2label.setAlignment(QtCore.Qt.AlignCenter)
+        self.option2label.setWordWrap(True)
+        self.option2label.setObjectName("option2label")
+        self.textInp = QtWidgets.QTextEdit(storyWindow)
+        self.textInp.setGeometry(QtCore.QRect(190, 320, 211, 121))
+        self.textInp.setStyleSheet("background-color:white;\n"
+"border-radius:5px;")
+        self.textInp.setObjectName("textInp")
+        self.goBtn = QtWidgets.QPushButton(storyWindow)
+        self.goBtn.setGeometry(QtCore.QRect(240, 460, 111, 27))
+        font = QtGui.QFont()
+        font.setFamily("Segoe UI")
+        self.goBtn.setFont(font)
+        self.goBtn.setStyleSheet("color:white;\n"
+"border:1px solid white;\n"
+"border-radius:4px;")
+        self.goBtn.setObjectName("goBtn")
+        self.nextBtn = QtWidgets.QPushButton(storyWindow)
+        self.nextBtn.setEnabled(False)
+        self.nextBtn.setGeometry(QtCore.QRect(470, 330, 61, 41))
+        self.nextBtn.setStyleSheet("border:1px solid white;\n"
+"border-radius:4px;")
+        self.nextBtn.setText("")
+        icon1 = QtGui.QIcon()
+        icon1.addPixmap(QtGui.QPixmap("ui\\../images/next.png"), QtGui.QIcon.Normal, QtGui.QIcon.On)
+        self.nextBtn.setIcon(icon1)
+        self.nextBtn.setIconSize(QtCore.QSize(32, 32))
+        self.nextBtn.setObjectName("nextBtn")
+        self.auxiliarlabel = QtWidgets.QLabel(storyWindow)
+        self.auxiliarlabel.setGeometry(QtCore.QRect(60, 230, 471, 71))
+        font = QtGui.QFont()
+        font.setFamily("Segoe UI")
+        font.setPointSize(11)
+        self.auxiliarlabel.setFont(font)
+        self.auxiliarlabel.setStyleSheet("color:white;\n"
+"border: 1px solid white;\n"
+"border-radius:4px;")
+        self.auxiliarlabel.setText("")
+        self.auxiliarlabel.setAlignment(QtCore.Qt.AlignCenter)
+        self.auxiliarlabel.setWordWrap(True)
+        self.auxiliarlabel.setObjectName("auxiliarlabel")
+
+        self.retranslateUi(storyWindow)
+        QtCore.QMetaObject.connectSlotsByName(storyWindow)
+
+    def retranslateUi(self, storyWindow):
+        _translate = QtCore.QCoreApplication.translate
+        storyWindow.setWindowTitle(_translate("storyWindow", "Story"))
+        self.phaseStory.setText(_translate("storyWindow", "Story"))
+        self.goBtn.setText(_translate("storyWindow", "GO"))
+
+
+if __name__ == "__main__":
+    import sys
+    app = QtWidgets.QApplication(sys.argv)
+    storyWindow = QtWidgets.QWidget()
+    ui = Ui_storyWindow()
+    ui.setupUi(storyWindow)
+    storyWindow.show()
+    sys.exit(app.exec_())
