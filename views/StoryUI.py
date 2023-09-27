@@ -98,6 +98,9 @@ class Ui_storyWindow(object):
         self.retranslateUi(storyWindow)
         QtCore.QMetaObject.connectSlotsByName(storyWindow)
 
+        # ---------- ACTIONS
+        self.goBtn.clicked.connect(lambda:self.main_controller.goDesc(Ui_storyWindow))
+
     def retranslateUi(self, storyWindow):
         _translate = QtCore.QCoreApplication.translate
         storyWindow.setWindowTitle(_translate("storyWindow", "Story"))

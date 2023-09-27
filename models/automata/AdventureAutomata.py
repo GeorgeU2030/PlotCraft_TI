@@ -11,6 +11,7 @@ class AdventureAutomata(DeterministicFiniteAutomaton):
         self.q3 = State("q3")
         self.q4 = State("q4")
         self.q5 = State("q5")
+        self.q6 = State("q6")
 
         # Establecer el estado inicial
         self.initial_state = self.q0
@@ -21,8 +22,8 @@ class AdventureAutomata(DeterministicFiniteAutomaton):
         self.add_transition(self.q0, "treasure hunt", self.q2)
         self.add_transition(self.q0, "desert race", self.q4)
 
-        self.add_transition(self.q1, "El jugador despierta en una tienda de campaña en medio de la jungla.", self.q5)
-        self.add_transition(self.q1, "hehe", self.q5)
+        self.add_transition(self.q1, "Despiertas en medio de la jungla", self.q5)
+        self.add_transition(self.q1, "Llegas a una aldea oculta en la jungla", self.q6)
 
         # Establecer estados finales (si es necesario)
         self.add_final_state(self.q1)
