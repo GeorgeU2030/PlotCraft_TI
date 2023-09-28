@@ -46,6 +46,7 @@ class AdventureController():
                     if symbol == text_in:
             # Encontre una transición que coincide
                         estado_actual = estado_siguiente
+                        self.automaton.current_state = estado_actual
                         break
             
             state_transitions = self.automaton.transitions[estado_actual]
@@ -63,6 +64,8 @@ class AdventureController():
             self.main_view.ui.setupUi(self.main_view.Form)
             self.main_view.ui.option1label.setText(symbols[0])
             self.main_view.ui.option2label.setText(symbols[1])
+            self.main_view.ui.nextBtn.setVisible(False)
+            self.main_view.ui.exchangeBtn.setVisible(False)
             self.main_view.ui.phaseStory.setText("Beginning")
             self.main_view.Form.show()
             

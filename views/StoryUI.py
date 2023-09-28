@@ -94,12 +94,23 @@ class Ui_storyWindow(object):
         self.auxiliarlabel.setAlignment(QtCore.Qt.AlignCenter)
         self.auxiliarlabel.setWordWrap(True)
         self.auxiliarlabel.setObjectName("auxiliarlabel")
+        self.exchangeBtn = QtWidgets.QPushButton(storyWindow)
+        self.exchangeBtn.setEnabled(False)
+        self.exchangeBtn.setGeometry(QtCore.QRect(60, 330, 61, 41))
+        self.exchangeBtn.setStyleSheet("border:1px solid white;\n"
+"border-radius:4px;")
+        self.exchangeBtn.setText("")
+        icon2 = QtGui.QIcon()
+        icon2.addPixmap(QtGui.QPixmap("ui\\../images/exchange.png"), QtGui.QIcon.Normal, QtGui.QIcon.On)
+        self.exchangeBtn.setIcon(icon2)
+        self.exchangeBtn.setIconSize(QtCore.QSize(32, 32))
+        self.exchangeBtn.setObjectName("exchangeBtn")
 
         self.retranslateUi(storyWindow)
         QtCore.QMetaObject.connectSlotsByName(storyWindow)
 
         # ---------- ACTIONS
-        self.goBtn.clicked.connect(lambda:self.main_controller.goDesc(Ui_storyWindow))
+        self.goBtn.clicked.connect(lambda:self.main_controller.goDesc(storyWindow))
 
     def retranslateUi(self, storyWindow):
         _translate = QtCore.QCoreApplication.translate
