@@ -8,6 +8,8 @@ import re
 from models.User import User
 from PyQt5.QtCore import Qt
 from PyQt5 import QtWidgets, QtGui
+from PyQt5.QtWidgets import QMessageBox
+from PyQt5.QtGui import QPixmap
 
 class GenresController():
     def __init__(self,main_view,user):
@@ -39,4 +41,43 @@ class GenresController():
             self.main_view.ui.setupUi(self.main_view.Form)
             self.main_view.Form.show()
 
+        else:
+            image_path = "images/warning.png"
+            original_pixmap = QPixmap(image_path)
+
+            max_width = 80
+            max_height = 80
+
+            scaled_pixmap = original_pixmap.scaled(max_width, max_height, Qt.KeepAspectRatio)
+            msgBox = QMessageBox()
+            msgBox.setIconPixmap(scaled_pixmap)  
+            msgBox.setWindowTitle("Warning")
+            msgBox.setText("Choose a valid genre.")
+            msgBox.setStandardButtons(QMessageBox.Ok)  
+
+            
+            msgBox.setStyleSheet("""
+                QMessageBox {
+                    background-color: #f0f0f0; /* Color de fondo */
+                    font-size: 14px; /* Tamaño de fuente */
+                }
+                QLabel {
+                    color: black; /* Color del texto */
+                    padding-top:10px; 
+                }
+                QPushButton {
+                    background-color: #007acc; /* Color de fondo del botón */
+                    color: white; /* Color del texto del botón */
+                    border: 1px solid #007acc; /* Borde del botón */
+                    padding: 5px 15px; /* Espaciado interno del botón */
+                    border-radius: 5px; /* Bordes redondeados */
+                }
+                QPushButton:hover {
+                    background-color: #005ca3; /* Cambio de color al pasar el mouse */
+                    border: 1px solid #005ca3; /* Cambio de borde al pasar el mouse */
+                }
+            """)
+
+            result = msgBox.exec_()
+            
        
