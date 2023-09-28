@@ -21,6 +21,7 @@ class GrammarAdventure():
         produccion = random.choice(list(self.grammar1.productions))
         descripcion = " ".join([str(simbolo.value) for simbolo in produccion.body])
         return descripcion
+    
     def descgic2(self):
         produccion = random.choice(list(self.grammar2.productions))
         descripcion = " ".join([str(simbolo.value) for simbolo in produccion.body])
