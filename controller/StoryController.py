@@ -20,8 +20,8 @@ class StoryController():
         text = self.main_view.textInp.toPlainText() 
         jungleExp1 = re.compile(r"Despiertas en medio de la jungla")
         jungleExp2 = re.compile(r"Llegas a una aldea oculta en la jungla")
+        dev1 = re.compile(r"Exploras la jungla y encuentras la cascada")
         if jungleExp1.search(text):
-        
             text_in='jungle exploration'
             estado_actual = self.automaton.q0;
 
@@ -53,21 +53,53 @@ class StoryController():
             self.main_view.ui.phaseStory.setText("Beginning")
             self.main_view.ui.textInp.setText(text)
 
-            if self.main_view.phaseStory.text()=='Beginning':
-                self.main_view.ui.nextBtn.setVisible(True)
-                self.main_view.ui.exchangeBtn.setVisible(False)
-                self.main_view.ui.nextBtn.setEnabled(True)
-                self.main_view.ui.goBtn.setEnabled(False)
-                self.main_view.ui.textInp.setEnabled(False)
-                grammar = GrammarAdventure()
-                if jungleExp1.search(text):
-                    description = grammar.descgic1()
-                elif jungleExp2.search(text):
-                    description = grammar.descgic2()
-                self.main_view.ui.auxiliarlabel.setText(description)
-
+            self.main_view.ui.nextBtn.setVisible(True)
+            self.main_view.ui.exchangeBtn.setVisible(False)
+            self.main_view.ui.nextBtn.setEnabled(True)
+            self.main_view.ui.goBtn.setEnabled(False)
+            self.main_view.ui.textInp.setEnabled(False)
+            grammar = GrammarAdventure()
+            if jungleExp1.search(text):
+                description = grammar.descgic1()
+            elif jungleExp2.search(text):
+                description = grammar.descgic2()
+            self.main_view.ui.auxiliarlabel.setText(description)
+        
             self.main_view.Form.show()
         
+        elif dev1.search(text):
+            text = self.main_view.textInp.toPlainText() 
+            text_in=text
+            current_state = self.automaton.current_state;
+                
+            state_transitions = self.automaton.transitions[current_state]
+
+            symbols = []
+            for transition in state_transitions:
+                symbol = transition[0] 
+                symbols.append(symbol)
+
+            from views.StoryUI import Ui_storyWindow as Story_Form
+            mainwindow.hide()
+            self.main_view.Form = QtWidgets.QMainWindow()
+            self.main_view.ui = Story_Form(self.user,self.automaton)
+            self.main_view.ui.setupUi(self.main_view.Form)
+            self.main_view.ui.option1label.setText(symbols[0])
+            self.main_view.ui.option2label.setText(symbols[1])
+            self.main_view.ui.phaseStory.setText("Development")
+            self.main_view.ui.textInp.setText(text)
+            if dev1.search(text):    
+                self.main_view.ui.auxiliarlabel.setText(text+" IGUAZU")
+            self.main_view.ui.nextBtn.setVisible(True)
+            self.main_view.ui.exchangeBtn.setVisible(True)
+            self.main_view.ui.exchangeBtn.setEnabled(True)
+            self.main_view.ui.nextBtn.setEnabled(True)
+            self.main_view.ui.goBtn.setEnabled(False)
+            self.main_view.ui.textInp.setEnabled(False)
+
+            self.main_view.Form.show()
+            
+            
         else:
             image_path = "images/warning.png"
             original_pixmap = QPixmap(image_path)
@@ -142,5 +174,19 @@ class StoryController():
             if self.main_view.phaseStory.text()=='Beginning':
                 self.main_view.ui.phaseStory.setText("Development")
                 self.main_view.ui.nextBtn.setVisible(False)
-                self.main_view.ui.exchangeBtn.setVisible(True)
+                self.main_view.ui.exchangeBtn.setVisible(False)
             self.main_view.Form.show()
+
+    
+    def exchange(self):
+        text = self.main_view.auxiliarlabel.text()
+        word = text.split()
+        lastword = word[-1]
+        from models.fst.AdventureFST import AdventureFST
+        newfst = AdventureFST()
+        result = newfst.transform(lastword)
+        textnew = word[:-1]
+        r_text = ' '.join(textnew)
+        wfst = ' '.join(result)
+        self.main_view.auxiliarlabel.setText(r_text+" "+wfst)
+        self.main_view.textInp.setText(r_text+" "+wfst)

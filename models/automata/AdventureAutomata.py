@@ -30,8 +30,8 @@ class AdventureAutomata(DeterministicFiniteAutomaton):
         self.add_transition(self.q1, "Llegas a una aldea oculta en la jungla", self.q6)
 
         # desenlace
-        self.add_transition(self.q5, "Exploras la jungla y encuentras la cascada ", self.q7)
-        self.add_transition(self.q5, "Encuentras rastros de una antigua de la civilizacion ", self.q8)
+        self.add_transition(self.q5, "Exploras la jungla y encuentras la cascada", self.q7)
+        self.add_transition(self.q5, "Encuentras rastros de una antigua de la civilizacion", self.q8)
 
          
 

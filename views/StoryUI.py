@@ -112,6 +112,7 @@ class Ui_storyWindow(object):
         # ---------- ACTIONS
         self.goBtn.clicked.connect(lambda:self.main_controller.goDesc(storyWindow))
         self.nextBtn.clicked.connect(lambda:self.main_controller.nextDesc(storyWindow))
+        self.exchangeBtn.clicked.connect(lambda:self.main_controller.exchange())
 
     def retranslateUi(self, storyWindow):
         _translate = QtCore.QCoreApplication.translate
