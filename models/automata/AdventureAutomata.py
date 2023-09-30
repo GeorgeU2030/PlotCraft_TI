@@ -14,6 +14,9 @@ class AdventureAutomata(DeterministicFiniteAutomaton):
         self.q6 = State("q6")
         self.q7 = State("q7")
         self.q8 = State("q8")
+        self.q9 = State("q9")
+        self.q10 = State("q10")
+        self.q11 = State("q11")
 
         self.current_state = self.q0
         # estado inicial
@@ -33,6 +36,22 @@ class AdventureAutomata(DeterministicFiniteAutomaton):
         self.add_transition(self.q5, "Exploras la jungla y encuentras la cascada", self.q7)
         self.add_transition(self.q5, "Encuentras rastros de una antigua de la civilizacion", self.q8)
 
+        self.add_transition(self.q6, "Te vas por el río y llegas a un misterioso templo", self.q9)
+        self.add_transition(self.q6, "Encuentras y te unes a la expedicion arqueologica", self.q10)
+
+        #finales
+
+        self.add_transition(self.q7, "En la cascada encuentras un tesoro y te conviertes en una leyenda", self.q11)
+        self.add_transition(self.q7, "alli encuentras una tribu y adoptas su estilo de vida en la jungla", self.q11)
+
+        self.add_transition(self.q8, "Regresas a casa con artefactos valiosos y te conviertes en un experto", self.q11)
+        self.add_transition(self.q8, "Eres rescatado por un equipo de la civilizacion y regresas a casa", self.q11)
+
+        self.add_transition(self.q9, "Te conviertes en un renombrado explorador de la jungla", self.q11)
+        self.add_transition(self.q9, "En el templo quedas atrapado por siempre al caer en una trampa", self.q11)
+
+        self.add_transition(self.q10, "Encuentras muchos tesoros en la expedicion y eres millonario", self.q11)
+        self.add_transition(self.q10, "Te pierdes en la jungla para siempre, convirtiendote en una leyenda perdida", self.q11)
          
 
     def add_transition(self, state_from, symbol, state_to):
