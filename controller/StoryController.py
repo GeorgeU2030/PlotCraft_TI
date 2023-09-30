@@ -193,7 +193,8 @@ class StoryController():
 
 
     def nextDesc(self, mainwindow):
-        
+        phase = self.main_view.phaseStory.text()
+        if phase != "End":
             text = self.main_view.textInp.toPlainText() 
             text_in=text
             current_state = self.automaton.current_state;
@@ -228,6 +229,13 @@ class StoryController():
                 self.main_view.ui.phaseStory.setText("End")
             self.main_view.ui.nextBtn.setVisible(False)
             self.main_view.ui.exchangeBtn.setVisible(False)
+            self.main_view.Form.show()
+        else:
+            from views.FinishUI import Ui_FinishStory as Finishform
+            mainwindow.hide()
+            self.main_view.Form = QtWidgets.QMainWindow()
+            self.main_view.ui = Finishform(self.user)
+            self.main_view.ui.setupUi(self.main_view.Form)
             self.main_view.Form.show()
 
     
