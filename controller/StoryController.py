@@ -19,22 +19,22 @@ class StoryController():
 
     def goDesc(self,mainwindow):
         text = self.main_view.textInp.toPlainText() 
-        jungleExp1 = re.compile(r"Despiertas en medio de la jungla")
-        jungleExp2 = re.compile(r"Llegas a una aldea oculta en la jungla")
+        jungleExp1 = re.compile(r"You wake up in the middle of the jungle")
+        jungleExp2 = re.compile(r"You arrive at a hidden village in the jungle")
 
-        dev1 = re.compile(r"Exploras la jungla y encuentras la cascada")
-        dev2 = re.compile(r"Encuentras rastros de una antigua de la civilizacion")
-        dev3 = re.compile(r"Te vas por el río y llegas a un misterioso templo")
-        dev4 = re.compile(r"Encuentras y te unes a la expedicion arqueologica")
+        dev1 = re.compile(r"You explore the jungle and find the waterfall")
+        dev2 = re.compile(r"You find traces of an ancient civilization")
+        dev3 = re.compile(r"You go down the river and arrive at a mysterious temple")
+        dev4 = re.compile(r"You find and join the archaeological expedition")
 
-        end1 = re.compile(r"En la cascada encuentras un tesoro y te conviertes en una leyenda")
-        end2 = re.compile(r"Alli encuentras una tribu y adoptas su estilo de vida en la jungla")
-        end3 = re.compile(r"Regresas a casa con artefactos valiosos y te conviertes en un experto")
-        end4 = re.compile(r"Eres rescatado por un equipo de la civilizacion y regresas a casa")
-        end5 = re.compile(r"Te conviertes en un renombrado explorador de la jungla")
-        end6 = re.compile(r"En el templo quedas atrapado por siempre al caer en una trampa")
-        end7 = re.compile(r"Encuentras muchos tesoros en la expedicion y eres millonario")
-        end8 = re.compile(r"Te pierdes en la jungla para siempre, convirtiendote en una leyenda perdida")
+        end1 = re.compile(r"At the waterfall, you find a treasure and become a legend")
+        end2 = re.compile(r"There, you encounter a tribe and adopt their jungle way of life")
+        end3 = re.compile(r"You return home with valuable artifacts and become an expert")
+        end4 = re.compile(r"You are rescued by a team from civilization and return home")
+        end5 = re.compile(r"You become a renowned jungle explorer")
+        end6 = re.compile(r"You get trapped forever in the temple after falling into a trap")
+        end7 = re.compile(r"You find many treasures on the expedition and become a millionaire")
+        end8 = re.compile(r"You get lost in the jungle forever, becoming a lost legend")
 
         if jungleExp1.search(text) or jungleExp2.search(text):
             text_in='jungle exploration'

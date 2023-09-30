@@ -5,14 +5,14 @@ class GrammarAdventure():
     
     def __init__(self):
         self.gic_inicio_1 = """
-            S -> El jugador despierta en una tienda de campaña en medio de la jungla.
-            S -> Al despertar, el jugador se encuentra en una tienda de campaña rodeada de densa vegetación en la jungla.
-            S -> Después de un sueño profundo, el jugador se da cuenta de que está en una tienda de campaña en medio de la selva.
+            S -> The player wakes up in a tent in the middle of the jungle.
+            S -> Upon waking up, the player finds themselves in a tent surrounded by dense vegetation in the jungle.
+            S -> After a deep sleep, the player realizes they are in a tent in the middle of the jungle.
         """
         self.gic_inicio_2 = """
-            S -> El jugador llega a una aldea tribal oculta en la jungla.
-            S -> Tras una larga travesía, el jugador descubre una aldea tribal escondida entre la densa selva.
-            S -> Al adentrarse en la jungla, el jugador se topa con una aldea tribal oculta.
+            S -> The player arrives at a hidden tribal village in the jungle.
+            S -> After a long journey, the player discovers a hidden tribal village nestled within the dense jungle.
+            S -> As the player ventures into the jungle, they come across a hidden tribal village.
         """
         self.grammar1 = CFG.from_text(self.gic_inicio_1)
         self.grammar2 = CFG.from_text(self.gic_inicio_2)

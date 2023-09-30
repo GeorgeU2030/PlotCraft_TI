@@ -29,29 +29,28 @@ class AdventureAutomata(DeterministicFiniteAutomaton):
         self.add_transition(self.q0, "desert race", self.q4)
 
         # inicios
-        self.add_transition(self.q1, "Despiertas en medio de la jungla", self.q5)
-        self.add_transition(self.q1, "Llegas a una aldea oculta en la jungla", self.q6)
+        self.add_transition(self.q1, "You wake up in the middle of the jungle", self.q5)
+        self.add_transition(self.q1, "You arrive at a hidden village in the jungle", self.q6)
 
         # desenlace
-        self.add_transition(self.q5, "Exploras la jungla y encuentras la cascada", self.q7)
-        self.add_transition(self.q5, "Encuentras rastros de una antigua de la civilizacion", self.q8)
+        self.add_transition(self.q5, "You explore the jungle and find the waterfall", self.q7)
+        self.add_transition(self.q5, "You find traces of an ancient civilization", self.q8)
 
-        self.add_transition(self.q6, "Te vas por el río y llegas a un misterioso templo", self.q9)
-        self.add_transition(self.q6, "Encuentras y te unes a la expedicion arqueologica", self.q10)
-
+        self.add_transition(self.q6, "You go down the river and arrive at a mysterious temple", self.q9)
+        self.add_transition(self.q6, "You find and join the archaeological expedition", self.q10)
         #finales
 
-        self.add_transition(self.q7, "En la cascada encuentras un tesoro y te conviertes en una leyenda", self.q11)
-        self.add_transition(self.q7, "alli encuentras una tribu y adoptas su estilo de vida en la jungla", self.q11)
+        self.add_transition(self.q7, "At the waterfall, you find a treasure and become a legend", self.q11)
+        self.add_transition(self.q7, "There, you encounter a tribe and adopt their jungle way of life", self.q11)
 
-        self.add_transition(self.q8, "Regresas a casa con artefactos valiosos y te conviertes en un experto", self.q11)
-        self.add_transition(self.q8, "Eres rescatado por un equipo de la civilizacion y regresas a casa", self.q11)
+        self.add_transition(self.q8, "You return home with valuable artifacts and become an expert", self.q11)
+        self.add_transition(self.q8, "You are rescued by a team from civilization and return home", self.q11)
 
-        self.add_transition(self.q9, "Te conviertes en un renombrado explorador de la jungla", self.q11)
-        self.add_transition(self.q9, "En el templo quedas atrapado por siempre al caer en una trampa", self.q11)
+        self.add_transition(self.q9, "You become a renowned jungle explorer", self.q11)
+        self.add_transition(self.q9, "You get trapped forever in the temple after falling into a trap", self.q11)
 
-        self.add_transition(self.q10, "Encuentras muchos tesoros en la expedicion y eres millonario", self.q11)
-        self.add_transition(self.q10, "Te pierdes en la jungla para siempre, convirtiendote en una leyenda perdida", self.q11)
+        self.add_transition(self.q10, "You find many treasures on the expedition and become a millionaire", self.q11)
+        self.add_transition(self.q10, "You get lost in the jungle forever, becoming a lost legend", self.q11)
          
 
     def add_transition(self, state_from, symbol, state_to):
