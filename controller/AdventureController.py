@@ -56,11 +56,12 @@ class AdventureController():
                 symbol = transition[0] 
                 symbols.append(symbol)
 
-
             from views.StoryUI import Ui_storyWindow as Story_Form
+            from models.ShortStory import ShortStory
             mainwindow.hide()
+            story = ShortStory()
             self.main_view.Form = QtWidgets.QMainWindow()
-            self.main_view.ui = Story_Form(self.user,self.automaton)
+            self.main_view.ui = Story_Form(self.user,self.automaton,story)
             self.main_view.ui.setupUi(self.main_view.Form)
             self.main_view.ui.option1label.setText(symbols[0])
             self.main_view.ui.option2label.setText(symbols[1])

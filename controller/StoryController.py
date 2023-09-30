@@ -11,10 +11,11 @@ from PyQt5.QtWidgets import QMessageBox
 from PyQt5.QtGui import QPixmap
 from models.grammar.GrammarAdventure import GrammarAdventure
 class StoryController():
-    def __init__(self,main_view,user,automaton):
+    def __init__(self,main_view,user,automaton,story):
         self.main_view = main_view
         self.user = user
         self.automaton = automaton
+        self.story = story
 
     def goDesc(self,mainwindow):
         text = self.main_view.textInp.toPlainText() 
@@ -60,7 +61,7 @@ class StoryController():
             from views.StoryUI import Ui_storyWindow as Story_Form
             mainwindow.hide()
             self.main_view.Form = QtWidgets.QMainWindow()
-            self.main_view.ui = Story_Form(self.user,self.automaton)
+            self.main_view.ui = Story_Form(self.user,self.automaton,self.story)
             self.main_view.ui.setupUi(self.main_view.Form)
             self.main_view.ui.option1label.setText(symbols[0])
             self.main_view.ui.option2label.setText(symbols[1])
@@ -96,7 +97,7 @@ class StoryController():
             from views.StoryUI import Ui_storyWindow as Story_Form
             mainwindow.hide()
             self.main_view.Form = QtWidgets.QMainWindow()
-            self.main_view.ui = Story_Form(self.user,self.automaton)
+            self.main_view.ui = Story_Form(self.user,self.automaton,self.story)
             self.main_view.ui.setupUi(self.main_view.Form)
             self.main_view.ui.option1label.setText(symbols[0])
             self.main_view.ui.option2label.setText(symbols[1])
@@ -134,7 +135,7 @@ class StoryController():
             from views.StoryUI import Ui_storyWindow as Story_Form
             mainwindow.hide()
             self.main_view.Form = QtWidgets.QMainWindow()
-            self.main_view.ui = Story_Form(self.user,self.automaton)
+            self.main_view.ui = Story_Form(self.user,self.automaton,self.story)
             self.main_view.ui.setupUi(self.main_view.Form)
             self.main_view.ui.option1label.setText(symbols[0])
             self.main_view.ui.option2label.setText(symbols[1])
@@ -195,7 +196,10 @@ class StoryController():
     def nextDesc(self, mainwindow):
         phase = self.main_view.phaseStory.text()
         if phase != "End":
-            text = self.main_view.textInp.toPlainText() 
+            text = self.main_view.textInp.toPlainText()
+            textauxiliar = self.main_view.auxiliarlabel.text()
+            textauxiliar += " "
+            self.story.content += textauxiliar
             text_in=text
             current_state = self.automaton.current_state;
 
@@ -219,7 +223,7 @@ class StoryController():
             from views.StoryUI import Ui_storyWindow as Story_Form
             mainwindow.hide()
             self.main_view.Form = QtWidgets.QMainWindow()
-            self.main_view.ui = Story_Form(self.user,self.automaton)
+            self.main_view.ui = Story_Form(self.user,self.automaton,self.story)
             self.main_view.ui.setupUi(self.main_view.Form)
             self.main_view.ui.option1label.setText(symbols[0])
             self.main_view.ui.option2label.setText(symbols[1])
@@ -231,11 +235,16 @@ class StoryController():
             self.main_view.ui.exchangeBtn.setVisible(False)
             self.main_view.Form.show()
         else:
+            textauxiliar = self.main_view.auxiliarlabel.text()
+            textauxiliar += " "
+            self.story.content += textauxiliar
+            textstory = self.story.content
             from views.FinishUI import Ui_FinishStory as Finishform
             mainwindow.hide()
             self.main_view.Form = QtWidgets.QMainWindow()
             self.main_view.ui = Finishform(self.user)
             self.main_view.ui.setupUi(self.main_view.Form)
+            self.main_view.ui.storylabel.setText(textstory)
             self.main_view.Form.show()
 
     
