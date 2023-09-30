@@ -1,6 +1,6 @@
 from pyformlang.fst import FST
 
-class AdventureFST:
+class JungleFST:
     def __init__(self):
         self.fst = FST()
         self.build_fst()

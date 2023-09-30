@@ -61,7 +61,7 @@ class StoryController():
             from views.StoryUI import Ui_storyWindow as Story_Form
             mainwindow.hide()
             self.main_view.Form = QtWidgets.QMainWindow()
-            self.main_view.ui = Story_Form(self.user,self.automaton,self.story)
+            self.main_view.ui = Story_Form(self.user,self.automaton,self.story,1)
             self.main_view.ui.setupUi(self.main_view.Form)
             self.main_view.ui.option1label.setText(symbols[0])
             self.main_view.ui.option2label.setText(symbols[1])
@@ -97,7 +97,7 @@ class StoryController():
             from views.StoryUI import Ui_storyWindow as Story_Form
             mainwindow.hide()
             self.main_view.Form = QtWidgets.QMainWindow()
-            self.main_view.ui = Story_Form(self.user,self.automaton,self.story)
+            self.main_view.ui = Story_Form(self.user,self.automaton,self.story,1)
             self.main_view.ui.setupUi(self.main_view.Form)
             self.main_view.ui.option1label.setText(symbols[0])
             self.main_view.ui.option2label.setText(symbols[1])
@@ -135,7 +135,7 @@ class StoryController():
             from views.StoryUI import Ui_storyWindow as Story_Form
             mainwindow.hide()
             self.main_view.Form = QtWidgets.QMainWindow()
-            self.main_view.ui = Story_Form(self.user,self.automaton,self.story)
+            self.main_view.ui = Story_Form(self.user,self.automaton,self.story,1)
             self.main_view.ui.setupUi(self.main_view.Form)
             self.main_view.ui.option1label.setText(symbols[0])
             self.main_view.ui.option2label.setText(symbols[1])
@@ -223,7 +223,7 @@ class StoryController():
             from views.StoryUI import Ui_storyWindow as Story_Form
             mainwindow.hide()
             self.main_view.Form = QtWidgets.QMainWindow()
-            self.main_view.ui = Story_Form(self.user,self.automaton,self.story)
+            self.main_view.ui = Story_Form(self.user,self.automaton,self.story,1)
             self.main_view.ui.setupUi(self.main_view.Form)
             self.main_view.ui.option1label.setText(symbols[0])
             self.main_view.ui.option2label.setText(symbols[1])
@@ -252,8 +252,8 @@ class StoryController():
         text = self.main_view.auxiliarlabel.text()
         word = text.split()
         lastword = word[-1]
-        from models.fst.AdventureFST import AdventureFST
-        newfst = AdventureFST()
+        from models.fst.JungleFST import JungleFST
+        newfst = JungleFST()
         result = newfst.transform(lastword)
         textnew = word[:-1]
         r_text = ' '.join(textnew)

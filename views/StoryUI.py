@@ -9,11 +9,12 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 
 
 class Ui_storyWindow(object):
-    def __init__(self, user,automaton,story):
+    def __init__(self, user,automaton,story,condition):
         self.user = user
         self.automaton = automaton
         self.story = story
-        self.main_controller = StoryController(self,user,automaton,story)
+        if condition == 1:
+            self.main_controller = StoryController(self,user,automaton,story)
 
     def setupUi(self, storyWindow):
         storyWindow.setObjectName("storyWindow")
