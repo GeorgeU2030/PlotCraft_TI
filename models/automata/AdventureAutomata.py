@@ -23,6 +23,12 @@ class AdventureAutomata(DeterministicFiniteAutomaton):
         self.q15 = State("q15")
         self.q16 = State("q16")
         self.q17 = State("q17")
+        self.q18 = State("q18")
+        self.q19 = State("q19")
+        self.q20 = State("q20")
+        self.q21 = State("q21")
+        self.q22 = State("q22")
+        self.q23 = State("q23")
 
         self.current_state = self.q0
         # estado inicial
@@ -41,6 +47,9 @@ class AdventureAutomata(DeterministicFiniteAutomaton):
         self.add_transition(self.q2, "You arrive on a deserted island after discovering an ancient treasure map", self.q12)
         self.add_transition(self.q2, "You arrive on a beautiful tropical island after discovering an ancient treasure map", self.q13)
 
+        self.add_transition(self.q3, "A team of brave explorers embarks on an expedition to the majestic Himalayas", self.q18)
+        self.add_transition(self.q3, "A group of nature enthusiasts and friends embarks on a journey through the Himalayas", self.q19)
+
         # desenlace
         self.add_transition(self.q5, "You explore the jungle and find the waterfall", self.q7)
         self.add_transition(self.q5, "You find traces of an ancient civilization", self.q8)
@@ -56,6 +65,16 @@ class AdventureAutomata(DeterministicFiniteAutomaton):
 
         self.add_transition(self.q13, "As they explore the island, they discover clues that lead them to secret and lush corners of the island", self.q16)
         self.add_transition(self.q13, "The exploration becomes complicated due to the island's natural dangers, and the treasure hunt is temporarily suspended by", self.q17)
+
+        # -------- himalayas
+
+        self.add_transition(self.q18, "As they ascend the high peaks, they face natural challenges such as snowstorms and", self.q20)
+        self.add_transition(self.q18, "Their expedition becomes complicated due to fatigue and extreme weather", self.q21)
+
+        self.add_transition(self.q19, "While traveling through the mountains, they discover ancient monasteries and form friendships with the community", self.q22)
+        self.add_transition(self.q19, "The journey becomes challenging due to altitude and adapting to the environment, leading them to make crucial", self.q23)
+
+
 
         #finales
 
@@ -84,6 +103,20 @@ class AdventureAutomata(DeterministicFiniteAutomaton):
 
         self.add_transition(self.q17, "You decide to go back home, but the island has left a lasting impression on their souls, and they dream of returning someday", self.q11)
         self.add_transition(self.q17, "You find temporary shelter on the island and learn to live in harmony with nature before embarking on new adventures", self.q11)
+
+        # himalayas
+
+        self.add_transition(self.q20, "They reach one of the highest summits, feeling the satisfaction of conquest and the breathtaking panoramic view of the mountains", self.q11)
+        self.add_transition(self.q20, "Despite not reaching the summit, the experience strengthens their bond as a team and fills them with awe for the majesty of the Himalayas", self.q11)
+
+        self.add_transition(self.q21, "They decide to return safely, recognizing that safety comes first, but with the determination to return in the future", self.q11)
+        self.add_transition(self.q21, "Their adventure in the Himalayas changes them profoundly, inspiring them to explore other corners of the world and appreciate the beauty of nature", self.q11)
+
+        self.add_transition(self.q22, "They visit a Buddhist monastery and are warmly welcomed, learning about the spirituality and culture of the Himalayas", self.q11)
+        self.add_transition(self.q22, "They join a local celebration and take part in spiritual practices that enrich their experience", self.q11)
+
+        self.add_transition(self.q23, "Although they decide to return earlier than planned, they deeply value their experience in the Himalayas and their connection with nature", self.q11)
+        self.add_transition(self.q23, "Their adventure in the Himalayas inspires them to lead a more mindful and environmentally respectful lifestyle", self.q11)
 
     def add_transition(self, state_from, symbol, state_to):
         super().add_transition(state_from, symbol, state_to)

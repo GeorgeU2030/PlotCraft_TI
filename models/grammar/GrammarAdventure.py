@@ -24,10 +24,22 @@ class GrammarAdventure():
             S -> With the ancient treasure map clutched in your hand, you set foot on the untouched sands of a breathtaking tropical island. The sun's warm rays caress your skin
             S -> Your journey in search of adventure and riches has brought you to the edge of the world, where a pristine tropical island awaits your exploration. 
         """
+        self.gic_inicio_5 = """
+            S -> A team of brave explorers, fueled by their unwavering spirit of adventure and a deep passion for discovery, embarks on an ambitious expedition to the majestic Himalayas.
+            S -> In a remote corner of the world, far from the comforts of civilization, a group of intrepid explorers, each carrying dreams as vast as the mountains they're about to scale.
+            S -> With mountaineering gear meticulously prepared and their resolve steeled against the challenges that lie ahead, a courageous team of adventurers commences an epic expedition.
+        """
+        self.gic_inicio_6 = """
+            S -> A group of nature enthusiasts and friends, bound by their love for the great outdoors and a sense of camaraderie, embarks on an exciting journey through the majestic Himalayas.
+            S -> Amidst laughter and shared excitement, a close-knit group of nature enthusiasts and friends sets out on an unforgettable journey through the rugged terrain of the Himalayas.
+            S -> With backpacks filled with curiosity and hearts brimming with adventure, a group of lifelong friends and nature enthusiasts begins a remarkable journey through the Himalayas.
+        """
         self.grammar1 = CFG.from_text(self.gic_inicio_1)
         self.grammar2 = CFG.from_text(self.gic_inicio_2)
         self.grammar3 = CFG.from_text(self.gic_inicio_3)
         self.grammar4 = CFG.from_text(self.gic_inicio_4)
+        self.grammar5 = CFG.from_text(self.gic_inicio_5)
+        self.grammar6 = CFG.from_text(self.gic_inicio_6)
 
     def descgic1(self):
         produccion = random.choice(list(self.grammar1.productions))
@@ -46,6 +58,16 @@ class GrammarAdventure():
 
     def descgic4(self):
         produccion = random.choice(list(self.grammar4.productions))
+        descripcion = " ".join([str(simbolo.value) for simbolo in produccion.body])
+        return descripcion
+    
+    def descgic5(self):
+        produccion = random.choice(list(self.grammar5.productions))
+        descripcion = " ".join([str(simbolo.value) for simbolo in produccion.body])
+        return descripcion
+
+    def descgic6(self):
+        produccion = random.choice(list(self.grammar6.productions))
         descripcion = " ".join([str(simbolo.value) for simbolo in produccion.body])
         return descripcion
 
