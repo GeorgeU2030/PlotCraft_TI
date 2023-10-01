@@ -26,6 +26,8 @@ class GenresController():
         from views.AdventureUI import Ui_adventureUI as Ui_Adv
         from views.SciFiUI import Ui_SciFi as Ui_Scf
         from models.automata.AdventureAutomata import AdventureAutomata
+        from models.automata.SciFiAutomata import SciFiAutomata
+
         if optionA.search(text):
             automaton = AdventureAutomata()
             Ui_Form.hide()
@@ -35,9 +37,10 @@ class GenresController():
             self.main_view.Form.show()
         
         elif optionB.search(text):
+            automaton = SciFiAutomata()
             Ui_Form.hide()
             self.main_view.Form = QtWidgets.QMainWindow()
-            self.main_view.ui = Ui_Scf(self.user)
+            self.main_view.ui = Ui_Scf(self.user,automaton)
             self.main_view.ui.setupUi(self.main_view.Form)
             self.main_view.Form.show()
 
