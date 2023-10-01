@@ -5,6 +5,7 @@ myDir = os.getcwd()
 sys.path.append(myDir)
 
 from controller.StoryController import StoryController
+from controller.TreasureController import TreasureController
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
@@ -15,6 +16,8 @@ class Ui_storyWindow(object):
         self.story = story
         if condition == 1:
             self.main_controller = StoryController(self,user,automaton,story)
+        if condition == 2:
+            self.main_controller = TreasureController(self,user,automaton,story)
 
     def setupUi(self, storyWindow):
         storyWindow.setObjectName("storyWindow")

@@ -132,9 +132,9 @@ class Ui_adventureUI(object):
 
         self.backBtn.clicked.connect(lambda:self.main_controller.backScreen(adventureUI))
         self.jungleBtn.clicked.connect(lambda checked,text="jungle":self.main_controller.jungleDesc(text,adventureUI))
-        self.treasureBtn.clicked.connect(lambda checked,text="treasure":self.main_controller.jungleDesc(text))
-        self.raceBtn.clicked.connect(lambda checked,text="race":self.main_controller.jungleDesc(text))
-        self.himalayaBtn.clicked.connect(lambda checked,text="himalaya":self.main_controller.jungleDesc(text))
+        self.treasureBtn.clicked.connect(lambda checked,text="treasure":self.main_controller.jungleDesc(text,adventureUI))
+        self.raceBtn.clicked.connect(lambda checked,text="race":self.main_controller.jungleDesc(text,adventureUI))
+        self.himalayaBtn.clicked.connect(lambda checked,text="himalaya":self.main_controller.jungleDesc(text,adventureUI))
 
     def retranslateUi(self, adventureUI):
         _translate = QtCore.QCoreApplication.translate

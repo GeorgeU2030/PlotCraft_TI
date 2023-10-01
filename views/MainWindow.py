@@ -139,7 +139,6 @@ class Ui_MainWindow(object):
         self.lblwelcome_2.setText(_translate("MainWindow", "Enter your Name"))
         self.pushButton.setText(_translate("MainWindow", "Start"))
 
-
         
 
 if __name__ == "__main__":
