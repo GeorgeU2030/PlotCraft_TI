@@ -29,6 +29,12 @@ class AdventureAutomata(DeterministicFiniteAutomaton):
         self.q21 = State("q21")
         self.q22 = State("q22")
         self.q23 = State("q23")
+        self.q24 = State("q24")
+        self.q25 = State("q25")
+        self.q26 = State("q26")
+        self.q27 = State("q27")
+        self.q28 = State("q28")
+        self.q29 = State("q29")
 
         self.current_state = self.q0
         # estado inicial
@@ -49,6 +55,9 @@ class AdventureAutomata(DeterministicFiniteAutomaton):
 
         self.add_transition(self.q3, "A team of brave explorers embarks on an expedition to the majestic Himalayas", self.q18)
         self.add_transition(self.q3, "A group of nature enthusiasts and friends embarks on a journey through the Himalayas", self.q19)
+
+        self.add_transition(self.q4, "At the start of the desert race, the competitors prepare to face challenges", self.q24)
+        self.add_transition(self.q4, "The race begins in the heart of the desert in the night, with the racers ready", self.q25)
 
         # desenlace
         self.add_transition(self.q5, "You explore the jungle and find the waterfall", self.q7)
@@ -74,8 +83,14 @@ class AdventureAutomata(DeterministicFiniteAutomaton):
         self.add_transition(self.q19, "While traveling through the mountains, they discover ancient monasteries and form friendships with the community", self.q22)
         self.add_transition(self.q19, "The journey becomes challenging due to altitude and adapting to the environment, leading them to make crucial", self.q23)
 
+        # ------ race desert
 
+        self.add_transition(self.q24, "The racers encounter a sandstorm that reduces visibility and complicates the race in their", self.q26)
+        self.add_transition(self.q24, "During the race, a vehicle gets stuck in a sand dune, requiring assistance from other competitors in their", self.q27)
 
+        self.add_transition(self.q25, "In the middle of the night race, competitors face a sandstorm that challenges their ability to navigate in the darkness in their", self.q28)
+        self.add_transition(self.q25, "As they progress in the darkness, the racers discover an alternative route that leads them to an oasis in the middle of the desert in their", self.q29)
+        
         #finales
 
         self.add_transition(self.q7, "At the waterfall, you find a treasure and become a legend", self.q11)
@@ -117,6 +132,20 @@ class AdventureAutomata(DeterministicFiniteAutomaton):
 
         self.add_transition(self.q23, "Although they decide to return earlier than planned, they deeply value their experience in the Himalayas and their connection with nature", self.q11)
         self.add_transition(self.q23, "Their adventure in the Himalayas inspires them to lead a more mindful and environmentally respectful lifestyle", self.q11)
+
+        # ------- race desert
+
+        self.add_transition(self.q26, "Despite the storm, some racers manage to reach the finish line, showcasing their skill in adverse conditions", self.q11)
+        self.add_transition(self.q26, "The sandstorm causes delays and challenges, but the race continues with determination", self.q11)
+
+        self.add_transition(self.q27, "The racers display sportsmanship by stopping to assist the stuck vehicle, resuming the race together", self.q11)
+        self.add_transition(self.q27, "Despite the obstacle, the team manages to free the vehicle and continues in the race", self.q11)
+
+        self.add_transition(self.q28, "Some racers persevere through the storm, successfully completing the nighttime race", self.q11)
+        self.add_transition(self.q28, "The sandstorm forces the nighttime race to be halted for safety reasons", self.q11)
+
+        self.add_transition(self.q29, "By choosing to explore the oasis, the racers discover a magical place and enjoy a break before returning to the race", self.q11)
+        self.add_transition(self.q29, "They decide to continue in the nighttime race, avoiding the distraction of the oasis and staying focused on the competition", self.q11)
 
     def add_transition(self, state_from, symbol, state_to):
         super().add_transition(state_from, symbol, state_to)
