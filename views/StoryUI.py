@@ -9,6 +9,7 @@ from controller.TreasureController import TreasureController
 from controller.HimalayaController import HimalayaController
 from controller.RaceController import RaceController
 from controller.AlienController import AlienController
+from controller.SpaceController import SpaceController
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
@@ -27,6 +28,8 @@ class Ui_storyWindow(object):
             self.main_controller = RaceController(self,user,automaton,story)
         if condition == 5:
             self.main_controller = AlienController(self,user,automaton,story)
+        if condition == 6:
+            self.main_controller = SpaceController(self,user,automaton,story)
 
     def setupUi(self, storyWindow):
         storyWindow.setObjectName("storyWindow")

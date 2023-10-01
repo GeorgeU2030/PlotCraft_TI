@@ -21,20 +21,7 @@ class SciFiAutomata(DeterministicFiniteAutomaton):
         self.q13 = State("q13")
         self.q14 = State("q14")
         self.q15 = State("q15")
-        self.q16 = State("q16")
-        self.q17 = State("q17")
-        self.q18 = State("q18")
-        self.q19 = State("q19")
-        self.q20 = State("q20")
-        self.q21 = State("q21")
-        self.q22 = State("q22")
-        self.q23 = State("q23")
-        self.q24 = State("q24")
-        self.q25 = State("q25")
-        self.q26 = State("q26")
-        self.q27 = State("q27")
-        self.q28 = State("q28")
-        self.q29 = State("q29")
+       
 
         self.current_state = self.q0
         # estado inicial
@@ -48,8 +35,8 @@ class SciFiAutomata(DeterministicFiniteAutomaton):
         self.add_transition(self.q1, "Alien spacecraft descend upon Earth, causing panic and confusion among the population", self.q3)
         self.add_transition(self.q1, "The human resistance joins forces in an effort to repel the alien invasion", self.q4)
 
-        self.add_transition(self.q2, "You arrive on a deserted island after discovering an ancient treasure map", self.q12)
-        self.add_transition(self.q2, "You arrive on a beautiful tropical island after discovering an ancient treasure map", self.q13)
+        self.add_transition(self.q2, "The Ares spacecraft successfully lifts off from Earth, marking the beginning of an exciting mission", self.q10)
+        self.add_transition(self.q2, "During the launch of the Ares spacecraft, technical issues arise that jeopardize the mission", self.q11)
 
 
         # desenlace
@@ -62,11 +49,11 @@ class SciFiAutomata(DeterministicFiniteAutomaton):
 
         # -------- space
 
-        self.add_transition(self.q12, "Then begin to explore the island in search of clues and buried treasures in island", self.q14)
-        self.add_transition(self.q12, "The exploration becomes dangerous due to the challenges, and the treasure hunt is interrupted by", self.q15)
+        self.add_transition(self.q10, "The Ares spacecraft safely lands on Mars, and the crew prepares to explore the planet of", self.q12)
+        self.add_transition(self.q10, "En route to the planet, the Ares spacecraft encounters a nearby asteroid and decides to investigate it before continuing to their destination to", self.q13)
 
-        self.add_transition(self.q13, "As they explore the island, they discover clues that lead them to secret and lush corners of the island", self.q16)
-        self.add_transition(self.q13, "The exploration becomes complicated due to the island's natural dangers, and the treasure hunt is temporarily suspended by", self.q17)
+        self.add_transition(self.q11, "The crew of the Ares spacecraft works tirelessly to address the technical issues and continue the mission to", self.q14)
+        self.add_transition(self.q11, "Despite the technical issues, the crew of the Ares spacecraft decides to press on with the mission and overcome the obstacles and arrive to", self.q15)
 
         
         #finales
@@ -85,17 +72,17 @@ class SciFiAutomata(DeterministicFiniteAutomaton):
          
          # finales space
 
-        self.add_transition(self.q14, "You find a chest with valuable treasures and celebrate their success on the beach", self.q11)
-        self.add_transition(self.q14, "Then discover a series of riddles and clues that lead them to another unknown island", self.q11)
+        self.add_transition(self.q12, "During their exploration of Planet, the crew makes a surprising discovery that could change our understanding of the planet", self.q9)
+        self.add_transition(self.q12, "The Ares spacecraft crew returns to Earth with valuable data and samples from this planet, contributing to scientific advancements", self.q9)
 
-        self.add_transition(self.q15, "Then decide to leave the island but remain intrigued by the unresolved mystery", self.q11)
-        self.add_transition(self.q15, "You find temporary shelter on the island and learn to survive before embarking on a new journey in search of the treasure", self.q11)
+        self.add_transition(self.q13, "The exploration of the asteroid reveals valuable information about the composition of these celestial bodies, which could benefit future space missions", self.q9)
+        self.add_transition(self.q13, "The crew of the Ares spacecraft documents and studies the asteroid, providing key data for scientific research", self.q9)
 
-        self.add_transition(self.q16, "Later discover a hidden waterfall with hidden treasures and celebrate their success in the tropical sunlight", self.q11)
-        self.add_transition(self.q16, "The clues lead them to a mysterious coral reef where they find ancient artifacts, but also face underwater dangers", self.q11)
+        self.add_transition(self.q14, "Despite the obstacles, the crew successfully resolves the technical issues and continues their exploration on the planet", self.q9)
+        self.add_transition(self.q14, "The crew's skills and dedication are put to the test, but they manage to overcome the technical challenges and advance in their mission", self.q9)
 
-        self.add_transition(self.q17, "You decide to go back home, but the island has left a lasting impression on their souls, and they dream of returning someday", self.q11)
-        self.add_transition(self.q17, "You find temporary shelter on the island and learn to live in harmony with nature before embarking on new adventures", self.q11)
+        self.add_transition(self.q15, "The determination of the crew drives them to overcome challenges and continue the exploration on the planet", self.q9)
+        self.add_transition(self.q15, "Despite setbacks, the crew maintains their spirit and forges ahead toward the planet with resolve", self.q9)
 
         
     def add_transition(self, state_from, symbol, state_to):

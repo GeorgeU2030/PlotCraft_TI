@@ -15,14 +15,15 @@ class GrammarSciFi():
             S -> Panic and bewilderment grip the world as alien vessels land on Earth, causing widespread chaos.
         """
         self.gic_inicio_3 = """
-            S -> Upon the serendipitous discovery of an ancient treasure map, you embark on a thrilling expedition, culminating in your arrival on a deserted island.
-            S -> As you uncover the secrets hidden within an age-old treasure map, your epic journey unfolds, eventually leading you to the shores of a secluded and uninhabited island.
-            S -> Your destiny takes a fateful turn when you stumble upon the dusty parchment of an ancient treasure map, setting in motion a grand adventure.
+            S -> The Ares spacecraft, a marvel of modern engineering, successfully lifts off from Earth, marking the beginning of an exciting mission to explore the mysteries of the cosmos.
+            S -> Amid cheers and applause, the Odyssey mission, a testament to human innovation, launches from our planet, carrying the dreams and ambitions of humanity into the vast and uncharted realms of space.
+            S -> With a thunderous roar, the Prometheus spacecraft embarks on its historic journey, venturing beyond our home planet and into the great expanse of the universe.
         """
+        
         self.gic_inicio_4 = """
-            S -> As the sun sets over the vast ocean, painting the sky with shades of orange and pink, you step onto the shore of a beautiful and remote tropical island. 
-            S -> With the ancient treasure map clutched in your hand, you set foot on the untouched sands of a breathtaking tropical island. The sun's warm rays caress your skin
-            S -> Your journey in search of adventure and riches has brought you to the edge of the world, where a pristine tropical island awaits your exploration. 
+            S -> During the launch of the Ares spacecraft, a hushed silence fills the control room as technical issues suddenly arise, casting doubt over the success of the mission.
+            S -> In the critical moments of the Ares spacecraft launch, unexpected technical problems surface, sending shockwaves through the team of scientists and engineers.
+            S -> As the countdown to the Ares spacecraft launch reaches its climax, unforeseen technical glitches threaten to derail the entire mission.
         """
         
         self.grammar1 = CFG.from_text(self.gic_inicio_1)
