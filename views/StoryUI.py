@@ -14,6 +14,7 @@ from controller.DramaController import DramaController
 from controller.FantasyController import FantasyController
 from controller.MysteryController import MysteryController
 from controller.HorrorController import HorrorController
+from controller.HistoricalController import HistoricalController
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
@@ -42,6 +43,8 @@ class Ui_storyWindow(object):
             self.main_controller = MysteryController(self,user,automaton,story)
         if condition == 10:
             self.main_controller = HorrorController(self,user,automaton,story)
+        if condition == 11:
+            self.main_controller = HistoricalController(self,user,automaton,story)
 
     def setupUi(self, storyWindow):
         storyWindow.setObjectName("storyWindow")
