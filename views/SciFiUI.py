@@ -5,7 +5,6 @@ myDir = os.getcwd()
 sys.path.append(myDir)
 
 from controller.SciFiController import SciFiController
-from PyQt5 import QtCore, QtGui, QtWidgets
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
