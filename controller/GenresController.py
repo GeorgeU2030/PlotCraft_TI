@@ -25,6 +25,7 @@ class GenresController():
         optionC = re.compile(r"Drama")
         optionD = re.compile(r"Fantasy")
         optionE = re.compile(r"Mystery")
+        optionF = re.compile(r"Horror")
         # imports
         from views.AdventureUI import Ui_adventureUI as Ui_Adv
         from views.SciFiUI import Ui_SciFi as Ui_Scf
@@ -34,6 +35,7 @@ class GenresController():
         from models.automata.DramaAutomata import DramaAutomata
         from models.automata.FantasyAutomata import FantasyAutomata
         from models.automata.MysteryAutomata import MysteryAutomata
+        from models.automata.HorrorAutomata import HorrorAutomata
 
         if optionA.search(text):
             automaton = AdventureAutomata()
@@ -79,6 +81,17 @@ class GenresController():
             self.main_view.ui.label_4.setPixmap(QtGui.QPixmap("images/mystery.jpg"))
             self.main_view.ui.label_5.setText("Mystery")
             self.main_view.ui.genreBtn.setText("A New Mystery")
+            self.main_view.Form.show()
+        
+        elif optionF.search(text):
+            automaton = HorrorAutomata()
+            Ui_Form.hide()
+            self.main_view.Form = QtWidgets.QMainWindow()
+            self.main_view.ui = Ui_theme(self.user,automaton)
+            self.main_view.ui.setupUi(self.main_view.Form)
+            self.main_view.ui.label_4.setPixmap(QtGui.QPixmap("images/horror.jpg"))
+            self.main_view.ui.label_5.setText("Horror")
+            self.main_view.ui.genreBtn.setText("The Nightmare")
             self.main_view.Form.show()
 
 
