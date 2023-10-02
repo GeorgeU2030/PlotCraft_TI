@@ -11,6 +11,7 @@ from controller.RaceController import RaceController
 from controller.AlienController import AlienController
 from controller.SpaceController import SpaceController
 from controller.DramaController import DramaController
+from controller.FantasyController import FantasyController
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
@@ -33,6 +34,8 @@ class Ui_storyWindow(object):
             self.main_controller = SpaceController(self,user,automaton,story)
         if condition == 7:
             self.main_controller = DramaController(self,user,automaton,story)
+        if condition == 8:
+            self.main_controller = FantasyController(self,user,automaton,story)
 
     def setupUi(self, storyWindow):
         storyWindow.setObjectName("storyWindow")

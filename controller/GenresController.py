@@ -23,6 +23,7 @@ class GenresController():
         optionA = re.compile(r"Adventure")
         optionB = re.compile(r"Sci-Fi")
         optionC = re.compile(r"Drama")
+        optionD = re.compile(r"Fantasy")
         # imports
         from views.AdventureUI import Ui_adventureUI as Ui_Adv
         from views.SciFiUI import Ui_SciFi as Ui_Scf
@@ -30,6 +31,7 @@ class GenresController():
         from models.automata.AdventureAutomata import AdventureAutomata
         from models.automata.SciFiAutomata import SciFiAutomata
         from models.automata.DramaAutomata import DramaAutomata
+        from models.automata.FantasyAutomata import FantasyAutomata
 
         if optionA.search(text):
             automaton = AdventureAutomata()
@@ -54,6 +56,18 @@ class GenresController():
             self.main_view.ui = Ui_theme(self.user,automaton)
             self.main_view.ui.setupUi(self.main_view.Form)
             self.main_view.Form.show()
+        
+        elif optionD.search(text):
+            automaton = FantasyAutomata()
+            Ui_Form.hide()
+            self.main_view.Form = QtWidgets.QMainWindow()
+            self.main_view.ui = Ui_theme(self.user,automaton)
+            self.main_view.ui.setupUi(self.main_view.Form)
+            self.main_view.ui.label_4.setPixmap(QtGui.QPixmap("images/fantasy.jpg"))
+            self.main_view.ui.label_5.setText("Fantasy")
+            self.main_view.ui.genreBtn.setText("Magical Artifact")
+            self.main_view.Form.show()
+
 
         else:
             image_path = "images/warning.png"
