@@ -5,7 +5,7 @@ myDir = os.getcwd()
 sys.path.append(myDir)
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-from controller.FinishController import FinishController
+from src.controller.FinishController import FinishController
 
 class Ui_FinishStory(object):
     def __init__(self, user):
@@ -16,7 +16,7 @@ class Ui_FinishStory(object):
         FinishStory.setObjectName("FinishStory")
         FinishStory.resize(600, 530)
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("ui\\../images/libro.png"), QtGui.QIcon.Normal, QtGui.QIcon.On)
+        icon.addPixmap(QtGui.QPixmap("srcimages/libro.png"), QtGui.QIcon.Normal, QtGui.QIcon.On)
         FinishStory.setWindowIcon(icon)
         FinishStory.setStyleSheet("background-color:#127acc;")
         self.label = QtWidgets.QLabel(FinishStory)

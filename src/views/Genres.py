@@ -5,7 +5,7 @@ import os
 myDir = os.getcwd()
 sys.path.append(myDir)
 
-from controller.GenresController import GenresController
+from src.controller.GenresController import GenresController
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
@@ -18,7 +18,7 @@ class Ui_GenresUI(object):
         GenresUI.setObjectName("GenresUI")
         GenresUI.resize(600, 530)
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("ui\\../images/libro.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap("src/images/libro.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         GenresUI.setWindowIcon(icon)
         GenresUI.setStyleSheet("background-color:#107acc;")
         self.label = QtWidgets.QLabel(GenresUI)
@@ -97,15 +97,7 @@ class Ui_GenresUI(object):
         self.label_8.setStyleSheet("color:white;")
         self.label_8.setAlignment(QtCore.Qt.AlignCenter)
         self.label_8.setObjectName("label_8")
-        self.label_9 = QtWidgets.QLabel(self.frame)
-        self.label_9.setGeometry(QtCore.QRect(50, 230, 81, 21))
-        font = QtGui.QFont()
-        font.setFamily("Segoe UI")
-        font.setPointSize(12)
-        self.label_9.setFont(font)
-        self.label_9.setStyleSheet("color:white;")
-        self.label_9.setAlignment(QtCore.Qt.AlignCenter)
-        self.label_9.setObjectName("label_9")
+        
         self.enterGenreLine = QtWidgets.QLineEdit(GenresUI)
         self.enterGenreLine.setGeometry(QtCore.QRect(220, 120, 171, 41))
         font = QtGui.QFont()
@@ -131,25 +123,25 @@ class Ui_GenresUI(object):
         self.label_10.setGeometry(QtCore.QRect(30, 160, 141, 111))
         self.label_10.setStyleSheet("border-radius:10px;")
         self.label_10.setText("")
-        self.label_10.setPixmap(QtGui.QPixmap("ui\\../images/adventure.jpg"))
+        self.label_10.setPixmap(QtGui.QPixmap("src/images/adventure.jpg"))
         self.label_10.setScaledContents(True)
         self.label_10.setObjectName("label_10")
         self.label_11 = QtWidgets.QLabel(GenresUI)
         self.label_11.setGeometry(QtCore.QRect(30, 310, 141, 111))
         self.label_11.setText("")
-        self.label_11.setPixmap(QtGui.QPixmap("ui\\../images/sci-fi.jpg"))
+        self.label_11.setPixmap(QtGui.QPixmap("src/images/sci-fi.jpg"))
         self.label_11.setScaledContents(True)
         self.label_11.setObjectName("label_11")
         self.label_12 = QtWidgets.QLabel(GenresUI)
         self.label_12.setGeometry(QtCore.QRect(430, 160, 141, 111))
         self.label_12.setText("")
-        self.label_12.setPixmap(QtGui.QPixmap("ui\\../images/horror.jpg"))
+        self.label_12.setPixmap(QtGui.QPixmap("src/images/horror.jpg"))
         self.label_12.setScaledContents(True)
         self.label_12.setObjectName("label_12")
         self.label_13 = QtWidgets.QLabel(GenresUI)
         self.label_13.setGeometry(QtCore.QRect(430, 310, 141, 111))
         self.label_13.setText("")
-        self.label_13.setPixmap(QtGui.QPixmap("ui\\../images/romance.jpg"))
+        self.label_13.setPixmap(QtGui.QPixmap("src/images/romance.jpg"))
         self.label_13.setScaledContents(True)
         self.label_13.setObjectName("label_13")
 
@@ -172,7 +164,7 @@ class Ui_GenresUI(object):
         self.label_6.setText(_translate("GenresUI", "Mystery"))
         self.label_7.setText(_translate("GenresUI", "Horror"))
         self.label_8.setText(_translate("GenresUI", "Historical"))
-        self.label_9.setText(_translate("GenresUI", "Comedy"))
+        
         self.startBtn.setText(_translate("GenresUI", "START"))
 
 

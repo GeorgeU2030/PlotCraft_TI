@@ -5,8 +5,8 @@ myDir = os.getcwd()
 sys.path.append(myDir)
 
 
-from controller.MainWindowController import MainWindowController
-from views.Genres import Ui_GenresUI as Genres_Form
+from src.controller.MainWindowController import MainWindowController
+from src.views.Genres import Ui_GenresUI as Genres_Form
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
@@ -28,7 +28,7 @@ class Ui_MainWindow(object):
         font.setFamily("Segoe UI")
         MainWindow.setFont(font)
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("images/libro.png"), QtGui.QIcon.Normal, QtGui.QIcon.On)
+        icon.addPixmap(QtGui.QPixmap("src/images/libro.png"), QtGui.QIcon.Normal, QtGui.QIcon.On)
         MainWindow.setWindowIcon(icon)
         MainWindow.setLayoutDirection(QtCore.Qt.LeftToRight)
         MainWindow.setStyleSheet("background-color:#107acc;")
@@ -37,7 +37,7 @@ class Ui_MainWindow(object):
         self.iconimg = QtWidgets.QLabel(self.centralwidget)
         self.iconimg.setGeometry(QtCore.QRect(150, 40, 61, 61))
         self.iconimg.setText("")
-        self.iconimg.setPixmap(QtGui.QPixmap("images/libro.png"))
+        self.iconimg.setPixmap(QtGui.QPixmap("src/images/libro.png"))
         self.iconimg.setScaledContents(True)
         self.iconimg.setObjectName("iconimg")
         self.title = QtWidgets.QLabel(self.centralwidget)

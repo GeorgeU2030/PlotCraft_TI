@@ -5,7 +5,7 @@ myDir = os.getcwd()
 sys.path.append(myDir)
 
 import re
-from models.User import User
+from src.models.User import User
 from PyQt5.QtCore import Qt
 from PyQt5 import QtWidgets, QtGui
 from PyQt5.QtWidgets import QMessageBox
@@ -28,16 +28,16 @@ class GenresController():
         optionF = re.compile(r"Horror")
         optionG = re.compile(r"Historical")
         # imports
-        from views.AdventureUI import Ui_adventureUI as Ui_Adv
-        from views.SciFiUI import Ui_SciFi as Ui_Scf
-        from views.ThemeFormUI import Ui_ThemeForm as Ui_theme
-        from models.automata.AdventureAutomata import AdventureAutomata
-        from models.automata.SciFiAutomata import SciFiAutomata
-        from models.automata.DramaAutomata import DramaAutomata
-        from models.automata.FantasyAutomata import FantasyAutomata
-        from models.automata.MysteryAutomata import MysteryAutomata
-        from models.automata.HorrorAutomata import HorrorAutomata
-        from models.automata.HistoricalAutomata import HistoricalAutomata
+        from src.views.AdventureUI import Ui_adventureUI as Ui_Adv
+        from src.views.SciFiUI import Ui_SciFi as Ui_Scf
+        from src.views.ThemeFormUI import Ui_ThemeForm as Ui_theme
+        from src.models.automata.AdventureAutomata import AdventureAutomata
+        from src.models.automata.SciFiAutomata import SciFiAutomata
+        from src.models.automata.DramaAutomata import DramaAutomata
+        from src.models.automata.FantasyAutomata import FantasyAutomata
+        from src.models.automata.MysteryAutomata import MysteryAutomata
+        from src.models.automata.HorrorAutomata import HorrorAutomata
+        from src.models.automata.HistoricalAutomata import HistoricalAutomata
 
         if optionA.search(text):
             automaton = AdventureAutomata()
@@ -108,7 +108,7 @@ class GenresController():
             self.main_view.Form.show()
 
         else:
-            image_path = "images/warning.png"
+            image_path = "src/images/warning.png"
             original_pixmap = QPixmap(image_path)
 
             max_width = 80

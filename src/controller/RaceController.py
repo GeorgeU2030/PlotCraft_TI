@@ -9,8 +9,8 @@ from PyQt5 import QtWidgets, QtGui
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QMessageBox
 from PyQt5.QtGui import QPixmap
-from models.grammar.GrammarMystery import GrammarMystery
-class MysteryController():
+from src.models.grammar.GrammarAdventure import GrammarAdventure
+class RaceController():
     def __init__(self,main_view,user,automaton,story):
         self.main_view = main_view
         self.user = user
@@ -19,25 +19,25 @@ class MysteryController():
 
     def goDesc(self,mainwindow):
         text = self.main_view.textInp.toPlainText() 
-        jungleExp1 = re.compile(r"I uncover an intriguing enigma that appears to have no explanation, an ancient encrypted letter I found in the main room")
-        jungleExp2 = re.compile(r"I discover a new clue that radically changes the direction of the investigation, a fingerprint at the crime scene that doesn't match any known suspect")
+        jungleExp1 = re.compile(r"At the start of the desert race, the competitors prepare to face challenges")
+        jungleExp2 = re.compile(r"The race begins in the heart of the desert in the night, with the racers ready")
 
-        dev1 = re.compile(r"Upon deciphering the letter, I find a crucial clue leading me to an old diary hidden in the mansion's library, revealing deep secrets in")
-        dev2 = re.compile(r"As I delve deeper into the investigation, I confront a mysterious figure in the darkness, an encounter that could change everything in")
-        dev3 = re.compile(r"The newly discovered fingerprint leads us to an unknown suspect, a twist that baffles the investigators in")
-        dev4 = re.compile(r"The ancient spellbook we find at the crime scene seems to be linked to the mystery, but its contents are incomprehensible in")
+        dev1 = re.compile(r"The racers encounter a sandstorm that reduces visibility and complicates the race in their")
+        dev2 = re.compile(r"During the race, a vehicle gets stuck in a sand dune, requiring assistance from other competitors in their")
+        dev3 = re.compile(r"In the middle of the night race, competitors face a sandstorm that challenges their ability to navigate in the darkness in their")
+        dev4 = re.compile(r"As they progress in the darkness, the racers discover an alternative route that leads them to an oasis in the middle of the desert in their")
 
-        end1 = re.compile(r"The diary's pages unveil dark family secrets previously unknown, bringing me closer to unraveling the mystery")
-        end2 = re.compile(r"The diary only leads to confusion and dead ends, leaving me even more baffled in my quest")
-        end3 = re.compile(r"During the confrontation, I manage to obtain crucial information that brings me closer to solving the mystery")
-        end4 = re.compile(r"The mysterious figure manages to escape, leaving me with no answers and grappling with more questions than before")
-        end5 = re.compile(r"While investigating the new suspect, we unravel a network of shocking secrets that bring us closer to the heart of the mystery")
-        end6 = re.compile(r"The fingerprint leads nowhere and turns out to be false, leaving us once again at a dead end")
-        end7 = re.compile(r"After deciphering the book, we discover a stunning revelation that leads us to the next chapter of the mystery")
-        end8 = re.compile(r"Misuse of the book triggers magical chaos, further complicating the resolution of the mystery")
+        end1 = re.compile(r"Despite the storm, some racers manage to reach the finish line, showcasing their skill in adverse conditions")
+        end2 = re.compile(r"The sandstorm causes delays and challenges, but the race continues with determination")
+        end3 = re.compile(r"The racers display sportsmanship by stopping to assist the stuck vehicle, resuming the race together")
+        end4 = re.compile(r"Despite the obstacle, the team manages to free the vehicle and continues in the race")
+        end5 = re.compile(r"Some racers persevere through the storm, successfully completing the nighttime race")
+        end6 = re.compile(r"The sandstorm forces the nighttime race to be halted for safety reasons")
+        end7 = re.compile(r"By choosing to explore the oasis, the racers discover a magical place and enjoy a break before returning to the race")
+        end8 = re.compile(r"They decide to continue in the nighttime race, avoiding the distraction of the oasis and staying focused on the competition")
 
         if jungleExp1.search(text) or jungleExp2.search(text):
-            text_in='mystery'
+            text_in='desert race'
             current_state = self.automaton.q0;
 
             if current_state in self.automaton.transitions:
@@ -58,10 +58,10 @@ class MysteryController():
                 symbol = transition[0] 
                 symbols.append(symbol)
 
-            from views.StoryUI import Ui_storyWindow as Story_Form
+            from src.views.StoryUI import Ui_storyWindow as Story_Form
             mainwindow.hide()
             self.main_view.Form = QtWidgets.QMainWindow()
-            self.main_view.ui = Story_Form(self.user,self.automaton,self.story,9)
+            self.main_view.ui = Story_Form(self.user,self.automaton,self.story,4)
             self.main_view.ui.setupUi(self.main_view.Form)
             self.main_view.ui.option1label.setText(symbols[0])
             self.main_view.ui.option2label.setText(symbols[1])
@@ -73,11 +73,11 @@ class MysteryController():
             self.main_view.ui.nextBtn.setEnabled(True)
             self.main_view.ui.goBtn.setEnabled(False)
             self.main_view.ui.textInp.setEnabled(False)
-            grammar = GrammarMystery()
+            grammar = GrammarAdventure()
             if jungleExp1.search(text):
-                description = grammar.descgic1()
+                description = grammar.descgic7()
             elif jungleExp2.search(text):
-                description = grammar.descgic2()
+                description = grammar.descgic8()
             self.main_view.ui.auxiliarlabel.setText(description)
         
             self.main_view.Form.show()
@@ -94,23 +94,23 @@ class MysteryController():
                 symbol = transition[0] 
                 symbols.append(symbol)
 
-            from views.StoryUI import Ui_storyWindow as Story_Form
+            from src.views.StoryUI import Ui_storyWindow as Story_Form
             mainwindow.hide()
             self.main_view.Form = QtWidgets.QMainWindow()
-            self.main_view.ui = Story_Form(self.user,self.automaton,self.story,9)
+            self.main_view.ui = Story_Form(self.user,self.automaton,self.story,4)
             self.main_view.ui.setupUi(self.main_view.Form)
             self.main_view.ui.option1label.setText(symbols[0])
             self.main_view.ui.option2label.setText(symbols[1])
             self.main_view.ui.phaseStory.setText("Development")
             self.main_view.ui.textInp.setText(text)
             if dev1.search(text):    
-                self.main_view.ui.auxiliarlabel.setText(text+" MANSION")
+                self.main_view.ui.auxiliarlabel.setText(text+" CHEVROLET")
             if dev2.search(text):    
-                self.main_view.ui.auxiliarlabel.setText(text+" MANSION")
+                self.main_view.ui.auxiliarlabel.setText(text+" CHEVROLET")
             if dev3.search(text):    
-                self.main_view.ui.auxiliarlabel.setText(text+" MANSION")
+                self.main_view.ui.auxiliarlabel.setText(text+" CHEVROLET")
             if dev4.search(text):    
-                self.main_view.ui.auxiliarlabel.setText(text+" MANSION")
+                self.main_view.ui.auxiliarlabel.setText(text+" CHEVROLET")
             self.main_view.ui.nextBtn.setVisible(True)
             self.main_view.ui.exchangeBtn.setVisible(True)
             self.main_view.ui.exchangeBtn.setEnabled(True)
@@ -132,10 +132,10 @@ class MysteryController():
                 symbol = transition[0] 
                 symbols.append(symbol)
 
-            from views.StoryUI import Ui_storyWindow as Story_Form
+            from src.views.StoryUI import Ui_storyWindow as Story_Form
             mainwindow.hide()
             self.main_view.Form = QtWidgets.QMainWindow()
-            self.main_view.ui = Story_Form(self.user,self.automaton,self.story,9)
+            self.main_view.ui = Story_Form(self.user,self.automaton,self.story,4)
             self.main_view.ui.setupUi(self.main_view.Form)
             self.main_view.ui.option1label.setText(symbols[0])
             self.main_view.ui.option2label.setText(symbols[1])
@@ -153,7 +153,7 @@ class MysteryController():
             
             
         else:
-            image_path = "images/warning.png"
+            image_path = "src/images/warning.png"
             original_pixmap = QPixmap(image_path)
 
             max_width = 80
@@ -220,10 +220,10 @@ class MysteryController():
                 symbol = transition[0] 
                 symbols.append(symbol)
             
-            from views.StoryUI import Ui_storyWindow as Story_Form
+            from src.views.StoryUI import Ui_storyWindow as Story_Form
             mainwindow.hide()
             self.main_view.Form = QtWidgets.QMainWindow()
-            self.main_view.ui = Story_Form(self.user,self.automaton,self.story,9)
+            self.main_view.ui = Story_Form(self.user,self.automaton,self.story,4)
             self.main_view.ui.setupUi(self.main_view.Form)
             self.main_view.ui.option1label.setText(symbols[0])
             self.main_view.ui.option2label.setText(symbols[1])
@@ -239,7 +239,7 @@ class MysteryController():
             textauxiliar += " "
             self.story.content += textauxiliar
             textstory = self.story.content
-            from views.FinishUI import Ui_FinishStory as Finishform
+            from src.views.FinishUI import Ui_FinishStory as Finishform
             mainwindow.hide()
             self.main_view.Form = QtWidgets.QMainWindow()
             self.main_view.ui = Finishform(self.user)
@@ -252,8 +252,8 @@ class MysteryController():
         text = self.main_view.auxiliarlabel.text()
         word = text.split()
         lastword = word[-1]
-        from models.fst.MysteryFST import MysteryFST
-        newfst = MysteryFST()
+        from src.models.fst.RaceFST import RaceFST
+        newfst = RaceFST()
         result = newfst.transform(lastword)
         textnew = word[:-1]
         r_text = ' '.join(textnew)

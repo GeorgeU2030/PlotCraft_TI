@@ -9,8 +9,8 @@ from PyQt5 import QtWidgets, QtGui
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QMessageBox
 from PyQt5.QtGui import QPixmap
-from models.grammar.GrammarSciFi import GrammarSciFi
-class AlienController():
+from src.models.grammar.GrammarAdventure import GrammarAdventure
+class TreasureController():
     def __init__(self,main_view,user,automaton,story):
         self.main_view = main_view
         self.user = user
@@ -19,25 +19,25 @@ class AlienController():
 
     def goDesc(self,mainwindow):
         text = self.main_view.textInp.toPlainText() 
-        jungleExp1 = re.compile(r"Alien spacecraft descend upon Earth, causing panic and confusion among the population")
-        jungleExp2 = re.compile(r"The human resistance joins forces in an effort to repel the alien invasion")
+        jungleExp1 = re.compile(r"You arrive on a deserted island after discovering an ancient treasure map")
+        jungleExp2 = re.compile(r"You arrive on a beautiful tropical island after discovering an ancient treasure map")
 
-        dev1 = re.compile(r"The alien spaceships descend upon Earth, causing panic and bewilderment among the population of")
-        dev2 = re.compile(r"The aliens make contact and reveal their intentions, demanding Earth's resources or threatening catastrophic consequences in")
-        dev3 = re.compile(r"Humanity organizes to confront the alien threat and fights valiantly in")
-        dev4 = re.compile(r"The aliens intensify their offensive, causing devastation on Earth specially in")
+        dev1 = re.compile(r"Then begin to explore the island in search of clues and buried treasures in island")
+        dev2 = re.compile(r"The exploration becomes dangerous due to the challenges, and the treasure hunt is interrupted by")
+        dev3 = re.compile(r"As they explore the island, they discover clues that lead them to secret and lush corners of the island")
+        dev4 = re.compile(r"The exploration becomes complicated due to the island's natural dangers, and the treasure hunt is temporarily suspended by")
 
-        end1 = re.compile(r"World leaders convene experts and scientists to analyze the ships and communicate with the aliens")
-        end2 = re.compile(r"The civilian population seeks refuge and watches in awe as the military prepares to defend against the invasion")
-        end3 = re.compile(r"World leaders attempt negotiations with the aliens to avoid conflict, while some challenge their authority")
-        end4 = re.compile(r"Humanity prepares to resist the alien invasion, uniting forces to protect their planet")
-        end5 = re.compile(r"An epic battle unfolds against the alien invaders, where humans display their bravery and determination")
-        end6 = re.compile(r"Scientists discover a weakness in alien technology and work on a plan to defeat the invaders")
-        end7 = re.compile(r"Humanity suffers significant losses but manages to resist and defend their planet against the alien invasion")
-        end8 = re.compile(r"Despite their bravery, humanity faces overwhelming difficulties and seeks a desperate solution to halt the invasion")
+        end1 = re.compile(r"You find a chest with valuable treasures and celebrate their success on the beach")
+        end2 = re.compile(r"Then discover a series of riddles and clues that lead them to another unknown island")
+        end3 = re.compile(r"Then decide to leave the island but remain intrigued by the unresolved mystery")
+        end4 = re.compile(r"You find temporary shelter on the island and learn to survive before embarking on a new journey in search of the treasure")
+        end5 = re.compile(r"Later discover a hidden waterfall with hidden treasures and celebrate their success in the tropical sunlight")
+        end6 = re.compile(r"The clues lead them to a mysterious coral reef where they find ancient artifacts, but also face underwater dangers")
+        end7 = re.compile(r"You decide to go back home, but the island has left a lasting impression on their souls, and they dream of returning someday")
+        end8 = re.compile(r"You find temporary shelter on the island and learn to live in harmony with nature before embarking on new adventures")
 
         if jungleExp1.search(text) or jungleExp2.search(text):
-            text_in='alien'
+            text_in='treasure hunt'
             current_state = self.automaton.q0;
 
             if current_state in self.automaton.transitions:
@@ -58,10 +58,10 @@ class AlienController():
                 symbol = transition[0] 
                 symbols.append(symbol)
 
-            from views.StoryUI import Ui_storyWindow as Story_Form
+            from src.views.StoryUI import Ui_storyWindow as Story_Form
             mainwindow.hide()
             self.main_view.Form = QtWidgets.QMainWindow()
-            self.main_view.ui = Story_Form(self.user,self.automaton,self.story,5)
+            self.main_view.ui = Story_Form(self.user,self.automaton,self.story,2)
             self.main_view.ui.setupUi(self.main_view.Form)
             self.main_view.ui.option1label.setText(symbols[0])
             self.main_view.ui.option2label.setText(symbols[1])
@@ -73,11 +73,11 @@ class AlienController():
             self.main_view.ui.nextBtn.setEnabled(True)
             self.main_view.ui.goBtn.setEnabled(False)
             self.main_view.ui.textInp.setEnabled(False)
-            grammar = GrammarSciFi()
+            grammar = GrammarAdventure()
             if jungleExp1.search(text):
-                description = grammar.descgic1()
+                description = grammar.descgic3()
             elif jungleExp2.search(text):
-                description = grammar.descgic2()
+                description = grammar.descgic4()
             self.main_view.ui.auxiliarlabel.setText(description)
         
             self.main_view.Form.show()
@@ -94,23 +94,23 @@ class AlienController():
                 symbol = transition[0] 
                 symbols.append(symbol)
 
-            from views.StoryUI import Ui_storyWindow as Story_Form
+            from src.views.StoryUI import Ui_storyWindow as Story_Form
             mainwindow.hide()
             self.main_view.Form = QtWidgets.QMainWindow()
-            self.main_view.ui = Story_Form(self.user,self.automaton,self.story,5)
+            self.main_view.ui = Story_Form(self.user,self.automaton,self.story,2)
             self.main_view.ui.setupUi(self.main_view.Form)
             self.main_view.ui.option1label.setText(symbols[0])
             self.main_view.ui.option2label.setText(symbols[1])
             self.main_view.ui.phaseStory.setText("Development")
             self.main_view.ui.textInp.setText(text)
             if dev1.search(text):    
-                self.main_view.ui.auxiliarlabel.setText(text+" USA")
+                self.main_view.ui.auxiliarlabel.setText(text+" CHRISTMAS")
             if dev2.search(text):    
-                self.main_view.ui.auxiliarlabel.setText(text+" USA")
+                self.main_view.ui.auxiliarlabel.setText(text+" EARTHQUAKE")
             if dev3.search(text):    
-                self.main_view.ui.auxiliarlabel.setText(text+" USA")
+                self.main_view.ui.auxiliarlabel.setText(text+" FIJI")
             if dev4.search(text):    
-                self.main_view.ui.auxiliarlabel.setText(text+" USA")
+                self.main_view.ui.auxiliarlabel.setText(text+" SANDSTORM")
             self.main_view.ui.nextBtn.setVisible(True)
             self.main_view.ui.exchangeBtn.setVisible(True)
             self.main_view.ui.exchangeBtn.setEnabled(True)
@@ -132,10 +132,10 @@ class AlienController():
                 symbol = transition[0] 
                 symbols.append(symbol)
 
-            from views.StoryUI import Ui_storyWindow as Story_Form
+            from src.views.StoryUI import Ui_storyWindow as Story_Form
             mainwindow.hide()
             self.main_view.Form = QtWidgets.QMainWindow()
-            self.main_view.ui = Story_Form(self.user,self.automaton,self.story,5)
+            self.main_view.ui = Story_Form(self.user,self.automaton,self.story,2)
             self.main_view.ui.setupUi(self.main_view.Form)
             self.main_view.ui.option1label.setText(symbols[0])
             self.main_view.ui.option2label.setText(symbols[1])
@@ -153,7 +153,7 @@ class AlienController():
             
             
         else:
-            image_path = "images/warning.png"
+            image_path = "src/images/warning.png"
             original_pixmap = QPixmap(image_path)
 
             max_width = 80
@@ -220,10 +220,10 @@ class AlienController():
                 symbol = transition[0] 
                 symbols.append(symbol)
             
-            from views.StoryUI import Ui_storyWindow as Story_Form
+            from src.views.StoryUI import Ui_storyWindow as Story_Form
             mainwindow.hide()
             self.main_view.Form = QtWidgets.QMainWindow()
-            self.main_view.ui = Story_Form(self.user,self.automaton,self.story,5)
+            self.main_view.ui = Story_Form(self.user,self.automaton,self.story,2)
             self.main_view.ui.setupUi(self.main_view.Form)
             self.main_view.ui.option1label.setText(symbols[0])
             self.main_view.ui.option2label.setText(symbols[1])
@@ -239,7 +239,7 @@ class AlienController():
             textauxiliar += " "
             self.story.content += textauxiliar
             textstory = self.story.content
-            from views.FinishUI import Ui_FinishStory as Finishform
+            from src.views.FinishUI import Ui_FinishStory as Finishform
             mainwindow.hide()
             self.main_view.Form = QtWidgets.QMainWindow()
             self.main_view.ui = Finishform(self.user)
@@ -252,8 +252,8 @@ class AlienController():
         text = self.main_view.auxiliarlabel.text()
         word = text.split()
         lastword = word[-1]
-        from models.fst.AlienFST import AlienFST
-        newfst = AlienFST()
+        from src.models.fst.TreasureFST import TreasureFST
+        newfst = TreasureFST()
         result = newfst.transform(lastword)
         textnew = word[:-1]
         r_text = ' '.join(textnew)

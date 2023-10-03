@@ -9,8 +9,8 @@ from PyQt5 import QtWidgets, QtGui
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QMessageBox
 from PyQt5.QtGui import QPixmap
-from models.grammar.GrammarAdventure import GrammarAdventure
-class TreasureController():
+from src.models.grammar.GrammarSciFi import GrammarSciFi
+class SpaceController():
     def __init__(self,main_view,user,automaton,story):
         self.main_view = main_view
         self.user = user
@@ -19,25 +19,25 @@ class TreasureController():
 
     def goDesc(self,mainwindow):
         text = self.main_view.textInp.toPlainText() 
-        jungleExp1 = re.compile(r"You arrive on a deserted island after discovering an ancient treasure map")
-        jungleExp2 = re.compile(r"You arrive on a beautiful tropical island after discovering an ancient treasure map")
+        jungleExp1 = re.compile(r"The Ares spacecraft successfully lifts off from Earth, marking the beginning of an exciting mission")
+        jungleExp2 = re.compile(r"During the launch of the Ares spacecraft, technical issues arise that jeopardize the mission")
 
-        dev1 = re.compile(r"Then begin to explore the island in search of clues and buried treasures in island")
-        dev2 = re.compile(r"The exploration becomes dangerous due to the challenges, and the treasure hunt is interrupted by")
-        dev3 = re.compile(r"As they explore the island, they discover clues that lead them to secret and lush corners of the island")
-        dev4 = re.compile(r"The exploration becomes complicated due to the island's natural dangers, and the treasure hunt is temporarily suspended by")
+        dev1 = re.compile(r"The Ares spacecraft safely lands on Mars, and the crew prepares to explore the planet of")
+        dev2 = re.compile(r"En route to the planet, the Ares spacecraft encounters a nearby asteroid and decides to investigate it before continuing to their destination to")
+        dev3 = re.compile(r"The crew of the Ares spacecraft works tirelessly to address the technical issues and continue the mission to")
+        dev4 = re.compile(r"Despite the technical issues, the crew of the Ares spacecraft decides to press on with the mission and overcome the obstacles and arrive to")
 
-        end1 = re.compile(r"You find a chest with valuable treasures and celebrate their success on the beach")
-        end2 = re.compile(r"Then discover a series of riddles and clues that lead them to another unknown island")
-        end3 = re.compile(r"Then decide to leave the island but remain intrigued by the unresolved mystery")
-        end4 = re.compile(r"You find temporary shelter on the island and learn to survive before embarking on a new journey in search of the treasure")
-        end5 = re.compile(r"Later discover a hidden waterfall with hidden treasures and celebrate their success in the tropical sunlight")
-        end6 = re.compile(r"The clues lead them to a mysterious coral reef where they find ancient artifacts, but also face underwater dangers")
-        end7 = re.compile(r"You decide to go back home, but the island has left a lasting impression on their souls, and they dream of returning someday")
-        end8 = re.compile(r"You find temporary shelter on the island and learn to live in harmony with nature before embarking on new adventures")
+        end1 = re.compile(r"During their exploration of Planet, the crew makes a surprising discovery that could change our understanding of the planet")
+        end2 = re.compile(r"The Ares spacecraft crew returns to Earth with valuable data and samples from this planet, contributing to scientific advancements")
+        end3 = re.compile(r"The exploration of the asteroid reveals valuable information about the composition of these celestial bodies, which could benefit future space missions")
+        end4 = re.compile(r"The crew of the Ares spacecraft documents and studies the asteroid, providing key data for scientific research")
+        end5 = re.compile(r"Despite the obstacles, the crew successfully resolves the technical issues and continues their exploration on the planet")
+        end6 = re.compile(r"The crew's skills and dedication are put to the test, but they manage to overcome the technical challenges and advance in their mission")
+        end7 = re.compile(r"The determination of the crew drives them to overcome challenges and continue the exploration on the planet")
+        end8 = re.compile(r"Despite setbacks, the crew maintains their spirit and forges ahead toward the planet with resolve")
 
         if jungleExp1.search(text) or jungleExp2.search(text):
-            text_in='treasure hunt'
+            text_in='space'
             current_state = self.automaton.q0;
 
             if current_state in self.automaton.transitions:
@@ -58,10 +58,10 @@ class TreasureController():
                 symbol = transition[0] 
                 symbols.append(symbol)
 
-            from views.StoryUI import Ui_storyWindow as Story_Form
+            from src.views.StoryUI import Ui_storyWindow as Story_Form
             mainwindow.hide()
             self.main_view.Form = QtWidgets.QMainWindow()
-            self.main_view.ui = Story_Form(self.user,self.automaton,self.story,2)
+            self.main_view.ui = Story_Form(self.user,self.automaton,self.story,6)
             self.main_view.ui.setupUi(self.main_view.Form)
             self.main_view.ui.option1label.setText(symbols[0])
             self.main_view.ui.option2label.setText(symbols[1])
@@ -73,7 +73,7 @@ class TreasureController():
             self.main_view.ui.nextBtn.setEnabled(True)
             self.main_view.ui.goBtn.setEnabled(False)
             self.main_view.ui.textInp.setEnabled(False)
-            grammar = GrammarAdventure()
+            grammar = GrammarSciFi()
             if jungleExp1.search(text):
                 description = grammar.descgic3()
             elif jungleExp2.search(text):
@@ -94,23 +94,23 @@ class TreasureController():
                 symbol = transition[0] 
                 symbols.append(symbol)
 
-            from views.StoryUI import Ui_storyWindow as Story_Form
+            from src.views.StoryUI import Ui_storyWindow as Story_Form
             mainwindow.hide()
             self.main_view.Form = QtWidgets.QMainWindow()
-            self.main_view.ui = Story_Form(self.user,self.automaton,self.story,2)
+            self.main_view.ui = Story_Form(self.user,self.automaton,self.story,6)
             self.main_view.ui.setupUi(self.main_view.Form)
             self.main_view.ui.option1label.setText(symbols[0])
             self.main_view.ui.option2label.setText(symbols[1])
             self.main_view.ui.phaseStory.setText("Development")
             self.main_view.ui.textInp.setText(text)
             if dev1.search(text):    
-                self.main_view.ui.auxiliarlabel.setText(text+" CHRISTMAS")
+                self.main_view.ui.auxiliarlabel.setText(text+" MARTE")
             if dev2.search(text):    
-                self.main_view.ui.auxiliarlabel.setText(text+" EARTHQUAKE")
+                self.main_view.ui.auxiliarlabel.setText(text+" MARTE")
             if dev3.search(text):    
-                self.main_view.ui.auxiliarlabel.setText(text+" FIJI")
+                self.main_view.ui.auxiliarlabel.setText(text+" MARTE")
             if dev4.search(text):    
-                self.main_view.ui.auxiliarlabel.setText(text+" SANDSTORM")
+                self.main_view.ui.auxiliarlabel.setText(text+" MARTE")
             self.main_view.ui.nextBtn.setVisible(True)
             self.main_view.ui.exchangeBtn.setVisible(True)
             self.main_view.ui.exchangeBtn.setEnabled(True)
@@ -132,10 +132,10 @@ class TreasureController():
                 symbol = transition[0] 
                 symbols.append(symbol)
 
-            from views.StoryUI import Ui_storyWindow as Story_Form
+            from src.views.StoryUI import Ui_storyWindow as Story_Form
             mainwindow.hide()
             self.main_view.Form = QtWidgets.QMainWindow()
-            self.main_view.ui = Story_Form(self.user,self.automaton,self.story,2)
+            self.main_view.ui = Story_Form(self.user,self.automaton,self.story,6)
             self.main_view.ui.setupUi(self.main_view.Form)
             self.main_view.ui.option1label.setText(symbols[0])
             self.main_view.ui.option2label.setText(symbols[1])
@@ -153,7 +153,7 @@ class TreasureController():
             
             
         else:
-            image_path = "images/warning.png"
+            image_path = "src/images/warning.png"
             original_pixmap = QPixmap(image_path)
 
             max_width = 80
@@ -220,10 +220,10 @@ class TreasureController():
                 symbol = transition[0] 
                 symbols.append(symbol)
             
-            from views.StoryUI import Ui_storyWindow as Story_Form
+            from src.views.StoryUI import Ui_storyWindow as Story_Form
             mainwindow.hide()
             self.main_view.Form = QtWidgets.QMainWindow()
-            self.main_view.ui = Story_Form(self.user,self.automaton,self.story,2)
+            self.main_view.ui = Story_Form(self.user,self.automaton,self.story,6)
             self.main_view.ui.setupUi(self.main_view.Form)
             self.main_view.ui.option1label.setText(symbols[0])
             self.main_view.ui.option2label.setText(symbols[1])
@@ -239,7 +239,7 @@ class TreasureController():
             textauxiliar += " "
             self.story.content += textauxiliar
             textstory = self.story.content
-            from views.FinishUI import Ui_FinishStory as Finishform
+            from src.views.FinishUI import Ui_FinishStory as Finishform
             mainwindow.hide()
             self.main_view.Form = QtWidgets.QMainWindow()
             self.main_view.ui = Finishform(self.user)
@@ -252,8 +252,8 @@ class TreasureController():
         text = self.main_view.auxiliarlabel.text()
         word = text.split()
         lastword = word[-1]
-        from models.fst.TreasureFST import TreasureFST
-        newfst = TreasureFST()
+        from src.models.fst.SpaceFST import SpaceFST
+        newfst = SpaceFST()
         result = newfst.transform(lastword)
         textnew = word[:-1]
         r_text = ' '.join(textnew)

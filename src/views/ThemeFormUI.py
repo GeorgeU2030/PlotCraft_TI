@@ -5,7 +5,7 @@ myDir = os.getcwd()
 sys.path.append(myDir)
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-from controller.ThemeController import ThemeController
+from src.controller.ThemeController import ThemeController
 
 class Ui_ThemeForm(object):
     def __init__(self, user,automaton):
@@ -17,7 +17,7 @@ class Ui_ThemeForm(object):
         ThemeForm.setObjectName("ThemeForm")
         ThemeForm.resize(600, 530)
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("ui\\../images/libro.png"), QtGui.QIcon.Normal, QtGui.QIcon.On)
+        icon.addPixmap(QtGui.QPixmap("src/images/libro.png"), QtGui.QIcon.Normal, QtGui.QIcon.On)
         ThemeForm.setWindowIcon(icon)
         ThemeForm.setStyleSheet("background-color:#127acc;")
         self.backBtn = QtWidgets.QPushButton(ThemeForm)
@@ -30,7 +30,7 @@ class Ui_ThemeForm(object):
 "}")
         self.backBtn.setText("")
         icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap("ui\\../images/arrow.png"), QtGui.QIcon.Normal, QtGui.QIcon.On)
+        icon1.addPixmap(QtGui.QPixmap("src/images/arrow.png"), QtGui.QIcon.Normal, QtGui.QIcon.On)
         self.backBtn.setIcon(icon1)
         self.backBtn.setObjectName("backBtn")
         self.label_5 = QtWidgets.QLabel(ThemeForm)
@@ -59,7 +59,7 @@ class Ui_ThemeForm(object):
         self.label_4 = QtWidgets.QLabel(self.frame_2)
         self.label_4.setGeometry(QtCore.QRect(60, 80, 121, 81))
         self.label_4.setText("")
-        self.label_4.setPixmap(QtGui.QPixmap("ui\\../images/romance.jpg"))
+        self.label_4.setPixmap(QtGui.QPixmap("src/images/romance.jpg"))
         self.label_4.setScaledContents(True)
         self.label_4.setObjectName("label_4")
 

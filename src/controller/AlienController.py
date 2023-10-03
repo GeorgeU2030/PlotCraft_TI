@@ -9,8 +9,8 @@ from PyQt5 import QtWidgets, QtGui
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QMessageBox
 from PyQt5.QtGui import QPixmap
-from models.grammar.GrammarSciFi import GrammarSciFi
-class SpaceController():
+from src.models.grammar.GrammarSciFi import GrammarSciFi
+class AlienController():
     def __init__(self,main_view,user,automaton,story):
         self.main_view = main_view
         self.user = user
@@ -19,25 +19,25 @@ class SpaceController():
 
     def goDesc(self,mainwindow):
         text = self.main_view.textInp.toPlainText() 
-        jungleExp1 = re.compile(r"The Ares spacecraft successfully lifts off from Earth, marking the beginning of an exciting mission")
-        jungleExp2 = re.compile(r"During the launch of the Ares spacecraft, technical issues arise that jeopardize the mission")
+        jungleExp1 = re.compile(r"Alien spacecraft descend upon Earth, causing panic and confusion among the population")
+        jungleExp2 = re.compile(r"The human resistance joins forces in an effort to repel the alien invasion")
 
-        dev1 = re.compile(r"The Ares spacecraft safely lands on Mars, and the crew prepares to explore the planet of")
-        dev2 = re.compile(r"En route to the planet, the Ares spacecraft encounters a nearby asteroid and decides to investigate it before continuing to their destination to")
-        dev3 = re.compile(r"The crew of the Ares spacecraft works tirelessly to address the technical issues and continue the mission to")
-        dev4 = re.compile(r"Despite the technical issues, the crew of the Ares spacecraft decides to press on with the mission and overcome the obstacles and arrive to")
+        dev1 = re.compile(r"The alien spaceships descend upon Earth, causing panic and bewilderment among the population of")
+        dev2 = re.compile(r"The aliens make contact and reveal their intentions, demanding Earth's resources or threatening catastrophic consequences in")
+        dev3 = re.compile(r"Humanity organizes to confront the alien threat and fights valiantly in")
+        dev4 = re.compile(r"The aliens intensify their offensive, causing devastation on Earth specially in")
 
-        end1 = re.compile(r"During their exploration of Planet, the crew makes a surprising discovery that could change our understanding of the planet")
-        end2 = re.compile(r"The Ares spacecraft crew returns to Earth with valuable data and samples from this planet, contributing to scientific advancements")
-        end3 = re.compile(r"The exploration of the asteroid reveals valuable information about the composition of these celestial bodies, which could benefit future space missions")
-        end4 = re.compile(r"The crew of the Ares spacecraft documents and studies the asteroid, providing key data for scientific research")
-        end5 = re.compile(r"Despite the obstacles, the crew successfully resolves the technical issues and continues their exploration on the planet")
-        end6 = re.compile(r"The crew's skills and dedication are put to the test, but they manage to overcome the technical challenges and advance in their mission")
-        end7 = re.compile(r"The determination of the crew drives them to overcome challenges and continue the exploration on the planet")
-        end8 = re.compile(r"Despite setbacks, the crew maintains their spirit and forges ahead toward the planet with resolve")
+        end1 = re.compile(r"World leaders convene experts and scientists to analyze the ships and communicate with the aliens")
+        end2 = re.compile(r"The civilian population seeks refuge and watches in awe as the military prepares to defend against the invasion")
+        end3 = re.compile(r"World leaders attempt negotiations with the aliens to avoid conflict, while some challenge their authority")
+        end4 = re.compile(r"Humanity prepares to resist the alien invasion, uniting forces to protect their planet")
+        end5 = re.compile(r"An epic battle unfolds against the alien invaders, where humans display their bravery and determination")
+        end6 = re.compile(r"Scientists discover a weakness in alien technology and work on a plan to defeat the invaders")
+        end7 = re.compile(r"Humanity suffers significant losses but manages to resist and defend their planet against the alien invasion")
+        end8 = re.compile(r"Despite their bravery, humanity faces overwhelming difficulties and seeks a desperate solution to halt the invasion")
 
         if jungleExp1.search(text) or jungleExp2.search(text):
-            text_in='space'
+            text_in='alien'
             current_state = self.automaton.q0;
 
             if current_state in self.automaton.transitions:
@@ -58,10 +58,10 @@ class SpaceController():
                 symbol = transition[0] 
                 symbols.append(symbol)
 
-            from views.StoryUI import Ui_storyWindow as Story_Form
+            from src.views.StoryUI import Ui_storyWindow as Story_Form
             mainwindow.hide()
             self.main_view.Form = QtWidgets.QMainWindow()
-            self.main_view.ui = Story_Form(self.user,self.automaton,self.story,6)
+            self.main_view.ui = Story_Form(self.user,self.automaton,self.story,5)
             self.main_view.ui.setupUi(self.main_view.Form)
             self.main_view.ui.option1label.setText(symbols[0])
             self.main_view.ui.option2label.setText(symbols[1])
@@ -75,9 +75,9 @@ class SpaceController():
             self.main_view.ui.textInp.setEnabled(False)
             grammar = GrammarSciFi()
             if jungleExp1.search(text):
-                description = grammar.descgic3()
+                description = grammar.descgic1()
             elif jungleExp2.search(text):
-                description = grammar.descgic4()
+                description = grammar.descgic2()
             self.main_view.ui.auxiliarlabel.setText(description)
         
             self.main_view.Form.show()
@@ -94,23 +94,23 @@ class SpaceController():
                 symbol = transition[0] 
                 symbols.append(symbol)
 
-            from views.StoryUI import Ui_storyWindow as Story_Form
+            from src.views.StoryUI import Ui_storyWindow as Story_Form
             mainwindow.hide()
             self.main_view.Form = QtWidgets.QMainWindow()
-            self.main_view.ui = Story_Form(self.user,self.automaton,self.story,6)
+            self.main_view.ui = Story_Form(self.user,self.automaton,self.story,5)
             self.main_view.ui.setupUi(self.main_view.Form)
             self.main_view.ui.option1label.setText(symbols[0])
             self.main_view.ui.option2label.setText(symbols[1])
             self.main_view.ui.phaseStory.setText("Development")
             self.main_view.ui.textInp.setText(text)
             if dev1.search(text):    
-                self.main_view.ui.auxiliarlabel.setText(text+" MARTE")
+                self.main_view.ui.auxiliarlabel.setText(text+" USA")
             if dev2.search(text):    
-                self.main_view.ui.auxiliarlabel.setText(text+" MARTE")
+                self.main_view.ui.auxiliarlabel.setText(text+" USA")
             if dev3.search(text):    
-                self.main_view.ui.auxiliarlabel.setText(text+" MARTE")
+                self.main_view.ui.auxiliarlabel.setText(text+" USA")
             if dev4.search(text):    
-                self.main_view.ui.auxiliarlabel.setText(text+" MARTE")
+                self.main_view.ui.auxiliarlabel.setText(text+" USA")
             self.main_view.ui.nextBtn.setVisible(True)
             self.main_view.ui.exchangeBtn.setVisible(True)
             self.main_view.ui.exchangeBtn.setEnabled(True)
@@ -132,10 +132,10 @@ class SpaceController():
                 symbol = transition[0] 
                 symbols.append(symbol)
 
-            from views.StoryUI import Ui_storyWindow as Story_Form
+            from src.views.StoryUI import Ui_storyWindow as Story_Form
             mainwindow.hide()
             self.main_view.Form = QtWidgets.QMainWindow()
-            self.main_view.ui = Story_Form(self.user,self.automaton,self.story,6)
+            self.main_view.ui = Story_Form(self.user,self.automaton,self.story,5)
             self.main_view.ui.setupUi(self.main_view.Form)
             self.main_view.ui.option1label.setText(symbols[0])
             self.main_view.ui.option2label.setText(symbols[1])
@@ -153,7 +153,7 @@ class SpaceController():
             
             
         else:
-            image_path = "images/warning.png"
+            image_path = "src/images/warning.png"
             original_pixmap = QPixmap(image_path)
 
             max_width = 80
@@ -220,10 +220,10 @@ class SpaceController():
                 symbol = transition[0] 
                 symbols.append(symbol)
             
-            from views.StoryUI import Ui_storyWindow as Story_Form
+            from src.views.StoryUI import Ui_storyWindow as Story_Form
             mainwindow.hide()
             self.main_view.Form = QtWidgets.QMainWindow()
-            self.main_view.ui = Story_Form(self.user,self.automaton,self.story,6)
+            self.main_view.ui = Story_Form(self.user,self.automaton,self.story,5)
             self.main_view.ui.setupUi(self.main_view.Form)
             self.main_view.ui.option1label.setText(symbols[0])
             self.main_view.ui.option2label.setText(symbols[1])
@@ -239,7 +239,7 @@ class SpaceController():
             textauxiliar += " "
             self.story.content += textauxiliar
             textstory = self.story.content
-            from views.FinishUI import Ui_FinishStory as Finishform
+            from src.views.FinishUI import Ui_FinishStory as Finishform
             mainwindow.hide()
             self.main_view.Form = QtWidgets.QMainWindow()
             self.main_view.ui = Finishform(self.user)
@@ -252,8 +252,8 @@ class SpaceController():
         text = self.main_view.auxiliarlabel.text()
         word = text.split()
         lastword = word[-1]
-        from models.fst.SpaceFST import SpaceFST
-        newfst = SpaceFST()
+        from src.models.fst.AlienFST import AlienFST
+        newfst = AlienFST()
         result = newfst.transform(lastword)
         textnew = word[:-1]
         r_text = ' '.join(textnew)

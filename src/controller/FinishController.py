@@ -11,7 +11,7 @@ class FinishController():
         self.user = user
     
     def backMenu(self, Ui_Form):
-        from views.MainWindow import Ui_MainWindow as Main
+        from src.views.MainWindow import Ui_MainWindow as Main
         Ui_Form.hide()
         self.main_view.Form = QtWidgets.QMainWindow()
         self.main_view.ui = Main()

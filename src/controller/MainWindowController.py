@@ -4,7 +4,7 @@ import os
 myDir = os.getcwd()
 sys.path.append(myDir)
 
-from models.User import User
+from src.models.User import User
 from PyQt5.QtCore import Qt
 from PyQt5 import QtWidgets, QtGui
 

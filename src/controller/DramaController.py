@@ -9,8 +9,8 @@ from PyQt5 import QtWidgets, QtGui
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QMessageBox
 from PyQt5.QtGui import QPixmap
-from models.grammar.GrammarFantasy import GrammarFantasy
-class FantasyController():
+from src.models.grammar.GrammarDrama import GrammarDrama
+class DramaController():
     def __init__(self,main_view,user,automaton,story):
         self.main_view = main_view
         self.user = user
@@ -19,25 +19,25 @@ class FantasyController():
 
     def goDesc(self,mainwindow):
         text = self.main_view.textInp.toPlainText() 
-        jungleExp1 = re.compile(r"We stumbled upon mysterious inscriptions that would lead us to the first challenge in our quest for the magical artifact")
-        jungleExp2 = re.compile(r"In the heart of the enchanted forest, we encountered a magical creature whose wisdom and guidance would be crucial in our mission")
+        jungleExp1 = re.compile(r"While walking along the bustling city avenue, I spotted someone in the distance who seemed familiar")
+        jungleExp2 = re.compile(r"Amidst the crowd gathering at the open-air concert, I locked eyes with someone I didn't expect to see")
 
-        dev1 = re.compile(r"The heroes uncover ancient clues that lead them to the first challenge in their quest for the")
-        dev2 = re.compile(r"The heroes encounter a powerful enemy also seeking the artifact, triggering an epic showdown for the")
-        dev3 = re.compile(r"The heroes ally with a magical creature that guides them through an enchanted forest in search of the next clue for the")
-        dev4 = re.compile(r"The heroes discover an ancient spellbook containing crucial hints about the location of the")
+        dev1 = re.compile(r"I recognize each other immediately and we start talking, reminiscing about the shared moments in")
+        dev2 = re.compile(r"We look at each other in surprise and hesitate to approach each other, creating tension in")
+        dev3 = re.compile(r"We meet in an unexpected place, such as an extraordinary event or situation, which forces us to interact in")
+        dev4 = re.compile(r"We cross paths in an unusual place but do not interact directly at first, Then we met in")
 
-        end1 = re.compile(r"They successfully solve the first challenge and move on to the next step of their adventure")
-        end2 = re.compile(r"They fail to solve the first challenge and must rethink their strategy before proceeding")
-        end3 = re.compile(r"They defeat the enemy and continue their quest with determination")
-        end4 = re.compile(r"The enemy overpowers them and gains an advantage in the race for the artifact")
-        end5 = re.compile(r"The magical creature becomes a valuable ally, sharing crucial knowledge")
-        end6 = re.compile(r"The magical creature betrays them, leading them into a deadly trap in the enchanted forest")
-        end7 = re.compile(r"They use the magic from the book to advance in their quest, gaining an advantage over their rivals")
-        end8 = re.compile(r"The misuse of the book triggers a magical disaster that puts them in grave danger")
+        end1 = re.compile(r"Both of us decide to spend more time together and revive the friendship or relationship we had")
+        end2 = re.compile(r"Despite the recognition, one of us decides to distance themselves, avoiding a resumption of the relationship")
+        end3 = re.compile(r"Eventually, we dare to speak and decide to try to heal the wounds of the past")
+        end4 = re.compile(r"Each of us goes our separate way, carrying the uncertainty of what could have been")
+        end5 = re.compile(r"During the experience, we find the opportunity to apologize and reconcile")
+        end6 = re.compile(r"Despite the initial surprise, we choose to ignore each other and continue with our lives")
+        end7 = re.compile(r"Over time, curiosity leads us to approach and eventually talk about our past")
+        end8 = re.compile(r"Although we share the same space, we decide not to address the past and move forward")
 
         if jungleExp1.search(text) or jungleExp2.search(text):
-            text_in='fantasy'
+            text_in='drama'
             current_state = self.automaton.q0;
 
             if current_state in self.automaton.transitions:
@@ -58,10 +58,10 @@ class FantasyController():
                 symbol = transition[0] 
                 symbols.append(symbol)
 
-            from views.StoryUI import Ui_storyWindow as Story_Form
+            from src.views.StoryUI import Ui_storyWindow as Story_Form
             mainwindow.hide()
             self.main_view.Form = QtWidgets.QMainWindow()
-            self.main_view.ui = Story_Form(self.user,self.automaton,self.story,8)
+            self.main_view.ui = Story_Form(self.user,self.automaton,self.story,7)
             self.main_view.ui.setupUi(self.main_view.Form)
             self.main_view.ui.option1label.setText(symbols[0])
             self.main_view.ui.option2label.setText(symbols[1])
@@ -73,7 +73,7 @@ class FantasyController():
             self.main_view.ui.nextBtn.setEnabled(True)
             self.main_view.ui.goBtn.setEnabled(False)
             self.main_view.ui.textInp.setEnabled(False)
-            grammar = GrammarFantasy()
+            grammar = GrammarDrama()
             if jungleExp1.search(text):
                 description = grammar.descgic1()
             elif jungleExp2.search(text):
@@ -94,23 +94,23 @@ class FantasyController():
                 symbol = transition[0] 
                 symbols.append(symbol)
 
-            from views.StoryUI import Ui_storyWindow as Story_Form
+            from src.views.StoryUI import Ui_storyWindow as Story_Form
             mainwindow.hide()
             self.main_view.Form = QtWidgets.QMainWindow()
-            self.main_view.ui = Story_Form(self.user,self.automaton,self.story,8)
+            self.main_view.ui = Story_Form(self.user,self.automaton,self.story,7)
             self.main_view.ui.setupUi(self.main_view.Form)
             self.main_view.ui.option1label.setText(symbols[0])
             self.main_view.ui.option2label.setText(symbols[1])
             self.main_view.ui.phaseStory.setText("Development")
             self.main_view.ui.textInp.setText(text)
             if dev1.search(text):    
-                self.main_view.ui.auxiliarlabel.setText(text+" EXCALIBUR")
+                self.main_view.ui.auxiliarlabel.setText(text+" PARIS")
             if dev2.search(text):    
-                self.main_view.ui.auxiliarlabel.setText(text+" EXCALIBUR")
+                self.main_view.ui.auxiliarlabel.setText(text+" PARIS")
             if dev3.search(text):    
-                self.main_view.ui.auxiliarlabel.setText(text+" EXCALIBUR")
+                self.main_view.ui.auxiliarlabel.setText(text+" PARIS")
             if dev4.search(text):    
-                self.main_view.ui.auxiliarlabel.setText(text+" EXCALIBUR")
+                self.main_view.ui.auxiliarlabel.setText(text+" PARIS")
             self.main_view.ui.nextBtn.setVisible(True)
             self.main_view.ui.exchangeBtn.setVisible(True)
             self.main_view.ui.exchangeBtn.setEnabled(True)
@@ -132,10 +132,10 @@ class FantasyController():
                 symbol = transition[0] 
                 symbols.append(symbol)
 
-            from views.StoryUI import Ui_storyWindow as Story_Form
+            from src.views.StoryUI import Ui_storyWindow as Story_Form
             mainwindow.hide()
             self.main_view.Form = QtWidgets.QMainWindow()
-            self.main_view.ui = Story_Form(self.user,self.automaton,self.story,8)
+            self.main_view.ui = Story_Form(self.user,self.automaton,self.story,7)
             self.main_view.ui.setupUi(self.main_view.Form)
             self.main_view.ui.option1label.setText(symbols[0])
             self.main_view.ui.option2label.setText(symbols[1])
@@ -153,7 +153,7 @@ class FantasyController():
             
             
         else:
-            image_path = "images/warning.png"
+            image_path = "src/images/warning.png"
             original_pixmap = QPixmap(image_path)
 
             max_width = 80
@@ -220,10 +220,10 @@ class FantasyController():
                 symbol = transition[0] 
                 symbols.append(symbol)
             
-            from views.StoryUI import Ui_storyWindow as Story_Form
+            from src.views.StoryUI import Ui_storyWindow as Story_Form
             mainwindow.hide()
             self.main_view.Form = QtWidgets.QMainWindow()
-            self.main_view.ui = Story_Form(self.user,self.automaton,self.story,8)
+            self.main_view.ui = Story_Form(self.user,self.automaton,self.story,7)
             self.main_view.ui.setupUi(self.main_view.Form)
             self.main_view.ui.option1label.setText(symbols[0])
             self.main_view.ui.option2label.setText(symbols[1])
@@ -239,7 +239,7 @@ class FantasyController():
             textauxiliar += " "
             self.story.content += textauxiliar
             textstory = self.story.content
-            from views.FinishUI import Ui_FinishStory as Finishform
+            from src.views.FinishUI import Ui_FinishStory as Finishform
             mainwindow.hide()
             self.main_view.Form = QtWidgets.QMainWindow()
             self.main_view.ui = Finishform(self.user)
@@ -252,8 +252,8 @@ class FantasyController():
         text = self.main_view.auxiliarlabel.text()
         word = text.split()
         lastword = word[-1]
-        from models.fst.FantasyFST import FantasyFST
-        newfst = FantasyFST()
+        from src.models.fst.DramaFST import DramaFST
+        newfst = DramaFST()
         result = newfst.transform(lastword)
         textnew = word[:-1]
         r_text = ' '.join(textnew)

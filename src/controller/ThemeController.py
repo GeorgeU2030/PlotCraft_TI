@@ -5,7 +5,7 @@ myDir = os.getcwd()
 sys.path.append(myDir)
 
 import re
-from models.User import User
+from src.models.User import User
 from PyQt5.QtCore import Qt
 from PyQt5 import QtWidgets, QtGui
 
@@ -16,7 +16,7 @@ class ThemeController():
         self.automaton = automaton
     
     def backScreen(self, mainwindow):
-        from views.Genres import Ui_GenresUI as Genres_Form
+        from src.views.Genres import Ui_GenresUI as Genres_Form
         mainwindow.hide()
         self.main_view.Form = QtWidgets.QMainWindow()
         self.main_view.ui = Genres_Form(self.user)
@@ -48,8 +48,8 @@ class ThemeController():
                 symbol = transition[0] 
                 symbols.append(symbol)
 
-            from views.StoryUI import Ui_storyWindow as Story_Form
-            from models.ShortStory import ShortStory
+            from src.views.StoryUI import Ui_storyWindow as Story_Form
+            from src.models.ShortStory import ShortStory
             mainwindow.hide()
             story = ShortStory()
             condition = 7
@@ -85,8 +85,8 @@ class ThemeController():
                 symbol = transition[0] 
                 symbols.append(symbol)
 
-            from views.StoryUI import Ui_storyWindow as Story_Form
-            from models.ShortStory import ShortStory
+            from src.views.StoryUI import Ui_storyWindow as Story_Form
+            from src.models.ShortStory import ShortStory
             mainwindow.hide()
             story = ShortStory()
             condition = 8
@@ -122,8 +122,8 @@ class ThemeController():
                 symbol = transition[0] 
                 symbols.append(symbol)
 
-            from views.StoryUI import Ui_storyWindow as Story_Form
-            from models.ShortStory import ShortStory
+            from src.views.StoryUI import Ui_storyWindow as Story_Form
+            from src.models.ShortStory import ShortStory
             mainwindow.hide()
             story = ShortStory()
             condition = 9
@@ -159,8 +159,8 @@ class ThemeController():
                 symbol = transition[0] 
                 symbols.append(symbol)
 
-            from views.StoryUI import Ui_storyWindow as Story_Form
-            from models.ShortStory import ShortStory
+            from src.views.StoryUI import Ui_storyWindow as Story_Form
+            from src.models.ShortStory import ShortStory
             mainwindow.hide()
             story = ShortStory()
             condition = 10
@@ -196,8 +196,8 @@ class ThemeController():
                 symbol = transition[0] 
                 symbols.append(symbol)
 
-            from views.StoryUI import Ui_storyWindow as Story_Form
-            from models.ShortStory import ShortStory
+            from src.views.StoryUI import Ui_storyWindow as Story_Form
+            from src.models.ShortStory import ShortStory
             mainwindow.hide()
             story = ShortStory()
             condition = 11

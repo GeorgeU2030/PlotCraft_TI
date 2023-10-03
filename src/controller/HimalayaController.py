@@ -9,8 +9,8 @@ from PyQt5 import QtWidgets, QtGui
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QMessageBox
 from PyQt5.QtGui import QPixmap
-from models.grammar.GrammarDrama import GrammarDrama
-class DramaController():
+from src.models.grammar.GrammarAdventure import GrammarAdventure
+class HimalayaController():
     def __init__(self,main_view,user,automaton,story):
         self.main_view = main_view
         self.user = user
@@ -19,25 +19,25 @@ class DramaController():
 
     def goDesc(self,mainwindow):
         text = self.main_view.textInp.toPlainText() 
-        jungleExp1 = re.compile(r"While walking along the bustling city avenue, I spotted someone in the distance who seemed familiar")
-        jungleExp2 = re.compile(r"Amidst the crowd gathering at the open-air concert, I locked eyes with someone I didn't expect to see")
+        jungleExp1 = re.compile(r"A team of brave explorers embarks on an expedition to the majestic Himalayas")
+        jungleExp2 = re.compile(r"A group of nature enthusiasts and friends embarks on a journey through the Himalayas")
 
-        dev1 = re.compile(r"I recognize each other immediately and we start talking, reminiscing about the shared moments in")
-        dev2 = re.compile(r"We look at each other in surprise and hesitate to approach each other, creating tension in")
-        dev3 = re.compile(r"We meet in an unexpected place, such as an extraordinary event or situation, which forces us to interact in")
-        dev4 = re.compile(r"We cross paths in an unusual place but do not interact directly at first, Then we met in")
+        dev1 = re.compile(r"As they ascend the high peaks, they face natural challenges such as snowstorms and")
+        dev2 = re.compile(r"Their expedition becomes complicated due to fatigue and extreme weather")
+        dev3 = re.compile(r"While traveling through the mountains, they discover ancient monasteries and form friendships with the community")
+        dev4 = re.compile(r"The journey becomes challenging due to altitude and adapting to the environment, leading them to make crucial")
 
-        end1 = re.compile(r"Both of us decide to spend more time together and revive the friendship or relationship we had")
-        end2 = re.compile(r"Despite the recognition, one of us decides to distance themselves, avoiding a resumption of the relationship")
-        end3 = re.compile(r"Eventually, we dare to speak and decide to try to heal the wounds of the past")
-        end4 = re.compile(r"Each of us goes our separate way, carrying the uncertainty of what could have been")
-        end5 = re.compile(r"During the experience, we find the opportunity to apologize and reconcile")
-        end6 = re.compile(r"Despite the initial surprise, we choose to ignore each other and continue with our lives")
-        end7 = re.compile(r"Over time, curiosity leads us to approach and eventually talk about our past")
-        end8 = re.compile(r"Although we share the same space, we decide not to address the past and move forward")
+        end1 = re.compile(r"They reach one of the highest summits, feeling the satisfaction of conquest and the breathtaking panoramic view of the mountains")
+        end2 = re.compile(r"Despite not reaching the summit, the experience strengthens their bond as a team and fills them with awe for the majesty of the Himalayas")
+        end3 = re.compile(r"They decide to return safely, recognizing that safety comes first, but with the determination to return in the future")
+        end4 = re.compile(r"Their adventure in the Himalayas changes them profoundly, inspiring them to explore other corners of the world and appreciate the beauty of nature")
+        end5 = re.compile(r"They visit a Buddhist monastery and are warmly welcomed, learning about the spirituality and culture of the Himalayas")
+        end6 = re.compile(r"They join a local celebration and take part in spiritual practices that enrich their experience")
+        end7 = re.compile(r"Although they decide to return earlier than planned, they deeply value their experience in the Himalayas and their connection with nature")
+        end8 = re.compile(r"Their adventure in the Himalayas inspires them to lead a more mindful and environmentally respectful lifestyle")
 
         if jungleExp1.search(text) or jungleExp2.search(text):
-            text_in='drama'
+            text_in='himalaya'
             current_state = self.automaton.q0;
 
             if current_state in self.automaton.transitions:
@@ -58,10 +58,10 @@ class DramaController():
                 symbol = transition[0] 
                 symbols.append(symbol)
 
-            from views.StoryUI import Ui_storyWindow as Story_Form
+            from src.views.StoryUI import Ui_storyWindow as Story_Form
             mainwindow.hide()
             self.main_view.Form = QtWidgets.QMainWindow()
-            self.main_view.ui = Story_Form(self.user,self.automaton,self.story,7)
+            self.main_view.ui = Story_Form(self.user,self.automaton,self.story,3)
             self.main_view.ui.setupUi(self.main_view.Form)
             self.main_view.ui.option1label.setText(symbols[0])
             self.main_view.ui.option2label.setText(symbols[1])
@@ -73,11 +73,11 @@ class DramaController():
             self.main_view.ui.nextBtn.setEnabled(True)
             self.main_view.ui.goBtn.setEnabled(False)
             self.main_view.ui.textInp.setEnabled(False)
-            grammar = GrammarDrama()
+            grammar = GrammarAdventure()
             if jungleExp1.search(text):
-                description = grammar.descgic1()
+                description = grammar.descgic5()
             elif jungleExp2.search(text):
-                description = grammar.descgic2()
+                description = grammar.descgic6()
             self.main_view.ui.auxiliarlabel.setText(description)
         
             self.main_view.Form.show()
@@ -94,23 +94,23 @@ class DramaController():
                 symbol = transition[0] 
                 symbols.append(symbol)
 
-            from views.StoryUI import Ui_storyWindow as Story_Form
+            from src.views.StoryUI import Ui_storyWindow as Story_Form
             mainwindow.hide()
             self.main_view.Form = QtWidgets.QMainWindow()
-            self.main_view.ui = Story_Form(self.user,self.automaton,self.story,7)
+            self.main_view.ui = Story_Form(self.user,self.automaton,self.story,3)
             self.main_view.ui.setupUi(self.main_view.Form)
             self.main_view.ui.option1label.setText(symbols[0])
             self.main_view.ui.option2label.setText(symbols[1])
             self.main_view.ui.phaseStory.setText("Development")
             self.main_view.ui.textInp.setText(text)
             if dev1.search(text):    
-                self.main_view.ui.auxiliarlabel.setText(text+" PARIS")
+                self.main_view.ui.auxiliarlabel.setText(text+" AVALANCHES")
             if dev2.search(text):    
-                self.main_view.ui.auxiliarlabel.setText(text+" PARIS")
+                self.main_view.ui.auxiliarlabel.setText(text+" WINDY")
             if dev3.search(text):    
-                self.main_view.ui.auxiliarlabel.setText(text+" PARIS")
+                self.main_view.ui.auxiliarlabel.setText(text+" BHUTIA")
             if dev4.search(text):    
-                self.main_view.ui.auxiliarlabel.setText(text+" PARIS")
+                self.main_view.ui.auxiliarlabel.setText(text+" DECISIONS")
             self.main_view.ui.nextBtn.setVisible(True)
             self.main_view.ui.exchangeBtn.setVisible(True)
             self.main_view.ui.exchangeBtn.setEnabled(True)
@@ -132,10 +132,10 @@ class DramaController():
                 symbol = transition[0] 
                 symbols.append(symbol)
 
-            from views.StoryUI import Ui_storyWindow as Story_Form
+            from src.views.StoryUI import Ui_storyWindow as Story_Form
             mainwindow.hide()
             self.main_view.Form = QtWidgets.QMainWindow()
-            self.main_view.ui = Story_Form(self.user,self.automaton,self.story,7)
+            self.main_view.ui = Story_Form(self.user,self.automaton,self.story,3)
             self.main_view.ui.setupUi(self.main_view.Form)
             self.main_view.ui.option1label.setText(symbols[0])
             self.main_view.ui.option2label.setText(symbols[1])
@@ -153,7 +153,7 @@ class DramaController():
             
             
         else:
-            image_path = "images/warning.png"
+            image_path = "src/images/warning.png"
             original_pixmap = QPixmap(image_path)
 
             max_width = 80
@@ -223,7 +223,7 @@ class DramaController():
             from views.StoryUI import Ui_storyWindow as Story_Form
             mainwindow.hide()
             self.main_view.Form = QtWidgets.QMainWindow()
-            self.main_view.ui = Story_Form(self.user,self.automaton,self.story,7)
+            self.main_view.ui = Story_Form(self.user,self.automaton,self.story,3)
             self.main_view.ui.setupUi(self.main_view.Form)
             self.main_view.ui.option1label.setText(symbols[0])
             self.main_view.ui.option2label.setText(symbols[1])
@@ -239,7 +239,7 @@ class DramaController():
             textauxiliar += " "
             self.story.content += textauxiliar
             textstory = self.story.content
-            from views.FinishUI import Ui_FinishStory as Finishform
+            from src.views.FinishUI import Ui_FinishStory as Finishform
             mainwindow.hide()
             self.main_view.Form = QtWidgets.QMainWindow()
             self.main_view.ui = Finishform(self.user)
@@ -252,8 +252,8 @@ class DramaController():
         text = self.main_view.auxiliarlabel.text()
         word = text.split()
         lastword = word[-1]
-        from models.fst.DramaFST import DramaFST
-        newfst = DramaFST()
+        from src.models.fst.HimalayaFST import HimalayaFST
+        newfst = HimalayaFST()
         result = newfst.transform(lastword)
         textnew = word[:-1]
         r_text = ' '.join(textnew)

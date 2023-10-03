@@ -9,8 +9,8 @@ from PyQt5 import QtWidgets, QtGui
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QMessageBox
 from PyQt5.QtGui import QPixmap
-from models.grammar.GrammarHorror import GrammarHorror
-class HorrorController():
+from src.models.grammar.GrammarFantasy import GrammarFantasy
+class FantasyController():
     def __init__(self,main_view,user,automaton,story):
         self.main_view = main_view
         self.user = user
@@ -19,25 +19,25 @@ class HorrorController():
 
     def goDesc(self,mainwindow):
         text = self.main_view.textInp.toPlainText() 
-        jungleExp1 = re.compile(r"As we explored the abandoned mansion, we felt that our footsteps echoed more than usual, and we decided to venture further")
-        jungleExp2 = re.compile(r"Upon entering the eerie lobby of the haunted hotel, a shiver ran down our spines, but we chose to confront our nightmares")
+        jungleExp1 = re.compile(r"We stumbled upon mysterious inscriptions that would lead us to the first challenge in our quest for the magical artifact")
+        jungleExp2 = re.compile(r"In the heart of the enchanted forest, we encountered a magical creature whose wisdom and guidance would be crucial in our mission")
 
-        dev1 = re.compile(r"The friends decide to explore the mansion further in search of answers and find a secret door in the")
-        dev2 = re.compile(r"The friends choose to leave the mansion, feeling that something is watching them like a")
-        dev3 = re.compile(r"The friends decide to investigate the oldest rooms of the hotel, where listen scream and some weird facts happen like")
-        dev4 = re.compile(r"They choose to leave the hotel due to the intensity of the paranormal experiences they face like")
+        dev1 = re.compile(r"The heroes uncover ancient clues that lead them to the first challenge in their quest for the")
+        dev2 = re.compile(r"The heroes encounter a powerful enemy also seeking the artifact, triggering an epic showdown for the")
+        dev3 = re.compile(r"The heroes ally with a magical creature that guides them through an enchanted forest in search of the next clue for the")
+        dev4 = re.compile(r"The heroes discover an ancient spellbook containing crucial hints about the location of the")
 
-        end1 = re.compile(r"Upon opening the secret door, they reveal a hidden passage leading to an even more sinister in the place")
-        end2 = re.compile(r"The secret door is sealed shut, and they cannot open it, leaving the abandoned mansion behind")
-        end3 = re.compile(r"As they exit the mansion, they hear footsteps behind them but see no one, filling them with fear")
-        end4 = re.compile(r"They leave the mansion without incident, but a strange shadow looms over them as they walk away")
-        end5 = re.compile(r"In one of the rooms, they find evidence of paranormal activity and choose to continue their investigation")
-        end6 = re.compile(r"They find nothing unusual in the old rooms and decide to leave the hotel")
-        end7 = re.compile(r"As they prepare to leave, a terrifying apparition blocks their way, leaving them trapped in the haunted hotel")
-        end8 = re.compile(r"They manage to leave the hotel, terrified, but they feel that something dark is following them as they walk away")
+        end1 = re.compile(r"They successfully solve the first challenge and move on to the next step of their adventure")
+        end2 = re.compile(r"They fail to solve the first challenge and must rethink their strategy before proceeding")
+        end3 = re.compile(r"They defeat the enemy and continue their quest with determination")
+        end4 = re.compile(r"The enemy overpowers them and gains an advantage in the race for the artifact")
+        end5 = re.compile(r"The magical creature becomes a valuable ally, sharing crucial knowledge")
+        end6 = re.compile(r"The magical creature betrays them, leading them into a deadly trap in the enchanted forest")
+        end7 = re.compile(r"They use the magic from the book to advance in their quest, gaining an advantage over their rivals")
+        end8 = re.compile(r"The misuse of the book triggers a magical disaster that puts them in grave danger")
 
         if jungleExp1.search(text) or jungleExp2.search(text):
-            text_in='horror'
+            text_in='fantasy'
             current_state = self.automaton.q0;
 
             if current_state in self.automaton.transitions:
@@ -58,10 +58,10 @@ class HorrorController():
                 symbol = transition[0] 
                 symbols.append(symbol)
 
-            from views.StoryUI import Ui_storyWindow as Story_Form
+            from src.views.StoryUI import Ui_storyWindow as Story_Form
             mainwindow.hide()
             self.main_view.Form = QtWidgets.QMainWindow()
-            self.main_view.ui = Story_Form(self.user,self.automaton,self.story,10)
+            self.main_view.ui = Story_Form(self.user,self.automaton,self.story,8)
             self.main_view.ui.setupUi(self.main_view.Form)
             self.main_view.ui.option1label.setText(symbols[0])
             self.main_view.ui.option2label.setText(symbols[1])
@@ -73,7 +73,7 @@ class HorrorController():
             self.main_view.ui.nextBtn.setEnabled(True)
             self.main_view.ui.goBtn.setEnabled(False)
             self.main_view.ui.textInp.setEnabled(False)
-            grammar = GrammarHorror()
+            grammar = GrammarFantasy()
             if jungleExp1.search(text):
                 description = grammar.descgic1()
             elif jungleExp2.search(text):
@@ -94,23 +94,23 @@ class HorrorController():
                 symbol = transition[0] 
                 symbols.append(symbol)
 
-            from views.StoryUI import Ui_storyWindow as Story_Form
+            from src.views.StoryUI import Ui_storyWindow as Story_Form
             mainwindow.hide()
             self.main_view.Form = QtWidgets.QMainWindow()
-            self.main_view.ui = Story_Form(self.user,self.automaton,self.story,10)
+            self.main_view.ui = Story_Form(self.user,self.automaton,self.story,8)
             self.main_view.ui.setupUi(self.main_view.Form)
             self.main_view.ui.option1label.setText(symbols[0])
             self.main_view.ui.option2label.setText(symbols[1])
             self.main_view.ui.phaseStory.setText("Development")
             self.main_view.ui.textInp.setText(text)
             if dev1.search(text):    
-                self.main_view.ui.auxiliarlabel.setText(text+" ROOM")
+                self.main_view.ui.auxiliarlabel.setText(text+" EXCALIBUR")
             if dev2.search(text):    
-                self.main_view.ui.auxiliarlabel.setText(text+" GHOST")
+                self.main_view.ui.auxiliarlabel.setText(text+" EXCALIBUR")
             if dev3.search(text):    
-                self.main_view.ui.auxiliarlabel.setText(text+" CARNAGE")
+                self.main_view.ui.auxiliarlabel.setText(text+" EXCALIBUR")
             if dev4.search(text):    
-                self.main_view.ui.auxiliarlabel.setText(text+" GHOST")
+                self.main_view.ui.auxiliarlabel.setText(text+" EXCALIBUR")
             self.main_view.ui.nextBtn.setVisible(True)
             self.main_view.ui.exchangeBtn.setVisible(True)
             self.main_view.ui.exchangeBtn.setEnabled(True)
@@ -132,10 +132,10 @@ class HorrorController():
                 symbol = transition[0] 
                 symbols.append(symbol)
 
-            from views.StoryUI import Ui_storyWindow as Story_Form
+            from src.views.StoryUI import Ui_storyWindow as Story_Form
             mainwindow.hide()
             self.main_view.Form = QtWidgets.QMainWindow()
-            self.main_view.ui = Story_Form(self.user,self.automaton,self.story,10)
+            self.main_view.ui = Story_Form(self.user,self.automaton,self.story,8)
             self.main_view.ui.setupUi(self.main_view.Form)
             self.main_view.ui.option1label.setText(symbols[0])
             self.main_view.ui.option2label.setText(symbols[1])
@@ -153,7 +153,7 @@ class HorrorController():
             
             
         else:
-            image_path = "images/warning.png"
+            image_path = "src/images/warning.png"
             original_pixmap = QPixmap(image_path)
 
             max_width = 80
@@ -220,10 +220,10 @@ class HorrorController():
                 symbol = transition[0] 
                 symbols.append(symbol)
             
-            from views.StoryUI import Ui_storyWindow as Story_Form
+            from src.views.StoryUI import Ui_storyWindow as Story_Form
             mainwindow.hide()
             self.main_view.Form = QtWidgets.QMainWindow()
-            self.main_view.ui = Story_Form(self.user,self.automaton,self.story,10)
+            self.main_view.ui = Story_Form(self.user,self.automaton,self.story,8)
             self.main_view.ui.setupUi(self.main_view.Form)
             self.main_view.ui.option1label.setText(symbols[0])
             self.main_view.ui.option2label.setText(symbols[1])
@@ -239,7 +239,7 @@ class HorrorController():
             textauxiliar += " "
             self.story.content += textauxiliar
             textstory = self.story.content
-            from views.FinishUI import Ui_FinishStory as Finishform
+            from src.views.FinishUI import Ui_FinishStory as Finishform
             mainwindow.hide()
             self.main_view.Form = QtWidgets.QMainWindow()
             self.main_view.ui = Finishform(self.user)
@@ -252,8 +252,8 @@ class HorrorController():
         text = self.main_view.auxiliarlabel.text()
         word = text.split()
         lastword = word[-1]
-        from models.fst.HorrorFST import HorrorFST
-        newfst = HorrorFST()
+        from src.models.fst.FantasyFST import FantasyFST
+        newfst = FantasyFST()
         result = newfst.transform(lastword)
         textnew = word[:-1]
         r_text = ' '.join(textnew)

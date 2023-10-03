@@ -4,7 +4,7 @@ import os
 myDir = os.getcwd()
 sys.path.append(myDir)
 
-from controller.AdventureController import AdventureController
+from src.controller.AdventureController import AdventureController
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 class Ui_adventureUI(object):
@@ -17,7 +17,7 @@ class Ui_adventureUI(object):
         adventureUI.setObjectName("adventureUI")
         adventureUI.resize(600, 530)
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("images/libro.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap("src/images/libro.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         adventureUI.setWindowIcon(icon)
         adventureUI.setStyleSheet("background-color:#107acc;")
         self.label = QtWidgets.QLabel(adventureUI)
@@ -54,13 +54,13 @@ class Ui_adventureUI(object):
         self.label_3 = QtWidgets.QLabel(self.frame)
         self.label_3.setGeometry(QtCore.QRect(60, 30, 121, 81))
         self.label_3.setText("")
-        self.label_3.setPixmap(QtGui.QPixmap("images/amazonas.jpg"))
+        self.label_3.setPixmap(QtGui.QPixmap("src/images/amazonas.jpg"))
         self.label_3.setScaledContents(True)
         self.label_3.setObjectName("label_3")
         self.label_4 = QtWidgets.QLabel(self.frame)
         self.label_4.setGeometry(QtCore.QRect(60, 170, 121, 81))
         self.label_4.setText("")
-        self.label_4.setPixmap(QtGui.QPixmap("images/himalaya.jpg"))
+        self.label_4.setPixmap(QtGui.QPixmap("src/images/himalaya.jpg"))
         self.label_4.setScaledContents(True)
         self.label_4.setObjectName("label_4")
         self.himalayaBtn = QtWidgets.QPushButton(self.frame)
@@ -91,13 +91,13 @@ class Ui_adventureUI(object):
         self.label_7 = QtWidgets.QLabel(self.frame_2)
         self.label_7.setGeometry(QtCore.QRect(60, 30, 121, 81))
         self.label_7.setText("")
-        self.label_7.setPixmap(QtGui.QPixmap("images/piratas.jpg"))
+        self.label_7.setPixmap(QtGui.QPixmap("src/images/piratas.jpg"))
         self.label_7.setScaledContents(True)
         self.label_7.setObjectName("label_7")
         self.label_8 = QtWidgets.QLabel(self.frame_2)
         self.label_8.setGeometry(QtCore.QRect(60, 170, 121, 81))
         self.label_8.setText("")
-        self.label_8.setPixmap(QtGui.QPixmap("images/sahara.jpg"))
+        self.label_8.setPixmap(QtGui.QPixmap("src/images/sahara.jpg"))
         self.label_8.setScaledContents(True)
         self.label_8.setObjectName("label_8")
         self.raceBtn = QtWidgets.QPushButton(self.frame_2)
@@ -120,7 +120,7 @@ class Ui_adventureUI(object):
 "}")
         self.backBtn.setText("")
         icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap("images/arrow.png"), QtGui.QIcon.Normal, QtGui.QIcon.On)
+        icon1.addPixmap(QtGui.QPixmap("src/images/arrow.png"), QtGui.QIcon.Normal, QtGui.QIcon.On)
         self.backBtn.setIcon(icon1)
         self.backBtn.setObjectName("backBtn")
 

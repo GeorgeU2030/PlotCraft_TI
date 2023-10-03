@@ -4,17 +4,17 @@ import os
 myDir = os.getcwd()
 sys.path.append(myDir)
 
-from controller.StoryController import StoryController
-from controller.TreasureController import TreasureController
-from controller.HimalayaController import HimalayaController
-from controller.RaceController import RaceController
-from controller.AlienController import AlienController
-from controller.SpaceController import SpaceController
-from controller.DramaController import DramaController
-from controller.FantasyController import FantasyController
-from controller.MysteryController import MysteryController
-from controller.HorrorController import HorrorController
-from controller.HistoricalController import HistoricalController
+from src.controller.StoryController import StoryController
+from src.controller.TreasureController import TreasureController
+from src.controller.HimalayaController import HimalayaController
+from src.controller.RaceController import RaceController
+from src.controller.AlienController import AlienController
+from src.controller.SpaceController import SpaceController
+from src.controller.DramaController import DramaController
+from src.controller.FantasyController import FantasyController
+from src.controller.MysteryController import MysteryController
+from src.controller.HorrorController import HorrorController
+from src.controller.HistoricalController import HistoricalController
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
@@ -50,7 +50,7 @@ class Ui_storyWindow(object):
         storyWindow.setObjectName("storyWindow")
         storyWindow.resize(600, 530)
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("ui\\../images/libro.png"), QtGui.QIcon.Normal, QtGui.QIcon.On)
+        icon.addPixmap(QtGui.QPixmap("src/images/libro.png"), QtGui.QIcon.Normal, QtGui.QIcon.On)
         storyWindow.setWindowIcon(icon)
         storyWindow.setStyleSheet("background-color:#107acc;")
         self.phaseStory = QtWidgets.QLabel(storyWindow)
@@ -109,7 +109,7 @@ class Ui_storyWindow(object):
 "border-radius:4px;")
         self.nextBtn.setText("")
         icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap("ui\\../images/next.png"), QtGui.QIcon.Normal, QtGui.QIcon.On)
+        icon1.addPixmap(QtGui.QPixmap("src/images/next.png"), QtGui.QIcon.Normal, QtGui.QIcon.On)
         self.nextBtn.setIcon(icon1)
         self.nextBtn.setIconSize(QtCore.QSize(32, 32))
         self.nextBtn.setObjectName("nextBtn")
@@ -133,7 +133,7 @@ class Ui_storyWindow(object):
 "border-radius:4px;")
         self.exchangeBtn.setText("")
         icon2 = QtGui.QIcon()
-        icon2.addPixmap(QtGui.QPixmap("ui\\../images/exchange.png"), QtGui.QIcon.Normal, QtGui.QIcon.On)
+        icon2.addPixmap(QtGui.QPixmap("src/images/exchange.png"), QtGui.QIcon.Normal, QtGui.QIcon.On)
         self.exchangeBtn.setIcon(icon2)
         self.exchangeBtn.setIconSize(QtCore.QSize(32, 32))
         self.exchangeBtn.setObjectName("exchangeBtn")

@@ -9,8 +9,8 @@ from PyQt5 import QtWidgets, QtGui
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QMessageBox
 from PyQt5.QtGui import QPixmap
-from models.grammar.GrammarHistorical import GrammarHistorical
-class HistoricalController():
+from src.models.grammar.GrammarHorror import GrammarHorror
+class HorrorController():
     def __init__(self,main_view,user,automaton,story):
         self.main_view = main_view
         self.user = user
@@ -19,25 +19,25 @@ class HistoricalController():
 
     def goDesc(self,mainwindow):
         text = self.main_view.textInp.toPlainText() 
-        jungleExp1 = re.compile(r"In the silent hallways of the royal palace, the rumor of a conspiracy that destabilize the city's destiny forever")
-        jungleExp2 = re.compile(r"On a dark and ominous night, flames rose over the city's buildings, causing a fire that would consume everything")
+        jungleExp1 = re.compile(r"As we explored the abandoned mansion, we felt that our footsteps echoed more than usual, and we decided to venture further")
+        jungleExp2 = re.compile(r"Upon entering the eerie lobby of the haunted hotel, a shiver ran down our spines, but we chose to confront our nightmares")
 
-        dev1 = re.compile(r"After a thorough investigation, the brave detectives finally uncovered the conspiracy behind, that shook society in")
-        dev2 = re.compile(r"The tragedy of the fire became a tool for political manipulation, with leaders making decisions that would change the fate of")
-        dev3 = re.compile(r"Chaos reigned for days as the fire swept through buildings and lives, leaving behind a devastation that seemed impossible in")
-        dev4 = re.compile(r"With determination and unity, the city rose from the ashes of the fire, rebuilding its buildings with a rebirth that inspired everyone from")
+        dev1 = re.compile(r"The friends decide to explore the mansion further in search of answers and find a secret door in the")
+        dev2 = re.compile(r"The friends choose to leave the mansion, feeling that something is watching them like a")
+        dev3 = re.compile(r"The friends decide to investigate the oldest rooms of the hotel, where listen scream and some weird facts happen like")
+        dev4 = re.compile(r"They choose to leave the hotel due to the intensity of the paranormal experiences they face like")
 
-        end1 = re.compile(r"An informant reveals a plot to overthrow the king, triggering an investigation at the court")
-        end2 = re.compile(r"Although there are suspicions of a conspiracy, no concrete evidence is found, leading to paranoia at the court")
-        end3 = re.compile(r"The plot turns out to be a political maneuver designed to eliminate rivals for the throne")
-        end4 = re.compile(r"Those implicated in the plot are arrested, but it is discovered that they were mere pawns in a larger game")
-        end5 = re.compile(r"The fire ravages a significant portion of the city, causing unprecedented devastation")
-        end6 = re.compile(r"Despite desperate efforts, the fire consumes the city almost entirely")
-        end7 = re.compile(r"After the destruction, the city is rebuilt with a renewed architecture and becomes a symbol of resilience")
-        end8 = re.compile(r"Although the city recovers, the scars of the fire endure in the collective memory of the population")
+        end1 = re.compile(r"Upon opening the secret door, they reveal a hidden passage leading to an even more sinister in the place")
+        end2 = re.compile(r"The secret door is sealed shut, and they cannot open it, leaving the abandoned mansion behind")
+        end3 = re.compile(r"As they exit the mansion, they hear footsteps behind them but see no one, filling them with fear")
+        end4 = re.compile(r"They leave the mansion without incident, but a strange shadow looms over them as they walk away")
+        end5 = re.compile(r"In one of the rooms, they find evidence of paranormal activity and choose to continue their investigation")
+        end6 = re.compile(r"They find nothing unusual in the old rooms and decide to leave the hotel")
+        end7 = re.compile(r"As they prepare to leave, a terrifying apparition blocks their way, leaving them trapped in the haunted hotel")
+        end8 = re.compile(r"They manage to leave the hotel, terrified, but they feel that something dark is following them as they walk away")
 
         if jungleExp1.search(text) or jungleExp2.search(text):
-            text_in='historical'
+            text_in='horror'
             current_state = self.automaton.q0;
 
             if current_state in self.automaton.transitions:
@@ -58,10 +58,10 @@ class HistoricalController():
                 symbol = transition[0] 
                 symbols.append(symbol)
 
-            from views.StoryUI import Ui_storyWindow as Story_Form
+            from src.views.StoryUI import Ui_storyWindow as Story_Form
             mainwindow.hide()
             self.main_view.Form = QtWidgets.QMainWindow()
-            self.main_view.ui = Story_Form(self.user,self.automaton,self.story,11)
+            self.main_view.ui = Story_Form(self.user,self.automaton,self.story,10)
             self.main_view.ui.setupUi(self.main_view.Form)
             self.main_view.ui.option1label.setText(symbols[0])
             self.main_view.ui.option2label.setText(symbols[1])
@@ -73,7 +73,7 @@ class HistoricalController():
             self.main_view.ui.nextBtn.setEnabled(True)
             self.main_view.ui.goBtn.setEnabled(False)
             self.main_view.ui.textInp.setEnabled(False)
-            grammar = GrammarHistorical()
+            grammar = GrammarHorror()
             if jungleExp1.search(text):
                 description = grammar.descgic1()
             elif jungleExp2.search(text):
@@ -94,23 +94,23 @@ class HistoricalController():
                 symbol = transition[0] 
                 symbols.append(symbol)
 
-            from views.StoryUI import Ui_storyWindow as Story_Form
+            from src.views.StoryUI import Ui_storyWindow as Story_Form
             mainwindow.hide()
             self.main_view.Form = QtWidgets.QMainWindow()
-            self.main_view.ui = Story_Form(self.user,self.automaton,self.story,11)
+            self.main_view.ui = Story_Form(self.user,self.automaton,self.story,10)
             self.main_view.ui.setupUi(self.main_view.Form)
             self.main_view.ui.option1label.setText(symbols[0])
             self.main_view.ui.option2label.setText(symbols[1])
             self.main_view.ui.phaseStory.setText("Development")
             self.main_view.ui.textInp.setText(text)
             if dev1.search(text):    
-                self.main_view.ui.auxiliarlabel.setText(text+" ROMA")
+                self.main_view.ui.auxiliarlabel.setText(text+" ROOM")
             if dev2.search(text):    
-                self.main_view.ui.auxiliarlabel.setText(text+" ROMA")
+                self.main_view.ui.auxiliarlabel.setText(text+" GHOST")
             if dev3.search(text):    
-                self.main_view.ui.auxiliarlabel.setText(text+" ROMA")
+                self.main_view.ui.auxiliarlabel.setText(text+" CARNAGE")
             if dev4.search(text):    
-                self.main_view.ui.auxiliarlabel.setText(text+" ROMA")
+                self.main_view.ui.auxiliarlabel.setText(text+" GHOST")
             self.main_view.ui.nextBtn.setVisible(True)
             self.main_view.ui.exchangeBtn.setVisible(True)
             self.main_view.ui.exchangeBtn.setEnabled(True)
@@ -132,10 +132,10 @@ class HistoricalController():
                 symbol = transition[0] 
                 symbols.append(symbol)
 
-            from views.StoryUI import Ui_storyWindow as Story_Form
+            from src.views.StoryUI import Ui_storyWindow as Story_Form
             mainwindow.hide()
             self.main_view.Form = QtWidgets.QMainWindow()
-            self.main_view.ui = Story_Form(self.user,self.automaton,self.story,11)
+            self.main_view.ui = Story_Form(self.user,self.automaton,self.story,10)
             self.main_view.ui.setupUi(self.main_view.Form)
             self.main_view.ui.option1label.setText(symbols[0])
             self.main_view.ui.option2label.setText(symbols[1])
@@ -153,7 +153,7 @@ class HistoricalController():
             
             
         else:
-            image_path = "images/warning.png"
+            image_path = "src/images/warning.png"
             original_pixmap = QPixmap(image_path)
 
             max_width = 80
@@ -220,10 +220,10 @@ class HistoricalController():
                 symbol = transition[0] 
                 symbols.append(symbol)
             
-            from views.StoryUI import Ui_storyWindow as Story_Form
+            from src.views.StoryUI import Ui_storyWindow as Story_Form
             mainwindow.hide()
             self.main_view.Form = QtWidgets.QMainWindow()
-            self.main_view.ui = Story_Form(self.user,self.automaton,self.story,11)
+            self.main_view.ui = Story_Form(self.user,self.automaton,self.story,10)
             self.main_view.ui.setupUi(self.main_view.Form)
             self.main_view.ui.option1label.setText(symbols[0])
             self.main_view.ui.option2label.setText(symbols[1])
@@ -239,7 +239,7 @@ class HistoricalController():
             textauxiliar += " "
             self.story.content += textauxiliar
             textstory = self.story.content
-            from views.FinishUI import Ui_FinishStory as Finishform
+            from src.views.FinishUI import Ui_FinishStory as Finishform
             mainwindow.hide()
             self.main_view.Form = QtWidgets.QMainWindow()
             self.main_view.ui = Finishform(self.user)
@@ -252,8 +252,8 @@ class HistoricalController():
         text = self.main_view.auxiliarlabel.text()
         word = text.split()
         lastword = word[-1]
-        from models.fst.HistoricalFST import HistoricalFST
-        newfst = HistoricalFST()
+        from src.models.fst.HorrorFST import HorrorFST
+        newfst = HorrorFST()
         result = newfst.transform(lastword)
         textnew = word[:-1]
         r_text = ' '.join(textnew)

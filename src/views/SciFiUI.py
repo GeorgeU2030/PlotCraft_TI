@@ -4,7 +4,7 @@ import os
 myDir = os.getcwd()
 sys.path.append(myDir)
 
-from controller.SciFiController import SciFiController
+from src.controller.SciFiController import SciFiController
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
@@ -19,7 +19,7 @@ class Ui_SciFi(object):
         SciFi.setObjectName("SciFi")
         SciFi.resize(600, 530)
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("ui\\../../../Downloads/libro.png"), QtGui.QIcon.Normal, QtGui.QIcon.On)
+        icon.addPixmap(QtGui.QPixmap("src/images/libro.png"), QtGui.QIcon.Normal, QtGui.QIcon.On)
         SciFi.setWindowIcon(icon)
         SciFi.setStyleSheet("background-color:#107acc\n"
 ";")
@@ -57,7 +57,7 @@ class Ui_SciFi(object):
         self.label_3 = QtWidgets.QLabel(self.frame)
         self.label_3.setGeometry(QtCore.QRect(60, 80, 121, 81))
         self.label_3.setText("")
-        self.label_3.setPixmap(QtGui.QPixmap("ui\\../images/spacexploration.jpg"))
+        self.label_3.setPixmap(QtGui.QPixmap("src/images/spacexploration.jpg"))
         self.label_3.setScaledContents(True)
         self.label_3.setObjectName("label_3")
         self.frame_2 = QtWidgets.QFrame(SciFi)
@@ -68,7 +68,7 @@ class Ui_SciFi(object):
         self.label_7 = QtWidgets.QLabel(self.frame_2)
         self.label_7.setGeometry(QtCore.QRect(60, 80, 121, 81))
         self.label_7.setText("")
-        self.label_7.setPixmap(QtGui.QPixmap("ui\\../images/alieninvasion.jpg"))
+        self.label_7.setPixmap(QtGui.QPixmap("src/images/alieninvasion.jpg"))
         self.label_7.setScaledContents(True)
         self.label_7.setObjectName("label_7")
         self.alienBtn = QtWidgets.QPushButton(self.frame_2)
@@ -91,7 +91,7 @@ class Ui_SciFi(object):
 "}")
         self.backBtn.setText("")
         icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap("ui\\../images/arrow.png"), QtGui.QIcon.Normal, QtGui.QIcon.On)
+        icon1.addPixmap(QtGui.QPixmap("src/images/arrow.png"), QtGui.QIcon.Normal, QtGui.QIcon.On)
         self.backBtn.setIcon(icon1)
         self.backBtn.setObjectName("backBtn")
 
